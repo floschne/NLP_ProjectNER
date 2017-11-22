@@ -10,6 +10,7 @@ buildNumber.properties
 
 ### intelliJ ###
 .idea/
+*.iml
 
 ### Eclipse ###
 .metadata
