@@ -43,17 +43,12 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
 
     /**
      * if a feature extraction/context extractor filename is given the xml file
-     * is parsed and the features are used, otherwise it will not be used
+     * is parsed and the featureExtractors are used, otherwise it will not be used
      */
     @ConfigurationParameter(name = PARAM_FEATURE_EXTRACTION_FILE, mandatory = false)
     private String featureExtractionFile = null;
 
-    private FeatureExtractor1<Token> tokenFeatureExtractor;
-
-    private CleartkExtractor<Token, Token> contextFeatureExtractor;
-    private TypePathExtractor<Token> stemExtractor;
-
-    List<FeatureExtractor1<Token>> features = new ArrayList<>();
+    private List<FeatureExtractor1<Token>> featureExtractors = new ArrayList<>();
 
     /*
      * CharacterCategoryPatternFunction -> good feature extractor for NER (hint by tutor)
@@ -63,29 +58,57 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
     @Override
     public void initialize(UimaContext context) throws ResourceInitializationException {
         super.initialize(context);
-        // add feature extractors
+        // instantiate and add feature extractors
         if (featureExtractionFile == null) {
             CharacterNgramFeatureFunction.Orientation fromRight = Orientation.RIGHT_TO_LEFT;
 
-            stemExtractor = new TypePathExtractor<Token>(Token.class, "stem/value");
+            TypePathExtractor<Token> stemExtractor = new TypePathExtractor<>(Token.class, "stem/value");
 
-            this.tokenFeatureExtractor = new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(),
-                    new LowerCaseFeatureFunction(), new CapitalTypeFeatureFunction(), new NumericTypeFeatureFunction(),
-                    new CharacterNgramFeatureFunction(fromRight, 0, 2));
+            // create a function feature extractor that creates features corresponding to the token
+            // Note the difference between feature extractors and feature functions here. Feature extractors take an Annotation
+            // from the JCas and extract features from it. Feature functions take the features produced by the feature extractor
+            // and generate new features from the old ones. Since feature functions don’t need to look up information in the JCas,
+            // they may be more efficient than feature extractors. So, the e.g. the CharacterNgramFeatureFunction simply extract
+            // suffixes from the text returned by the CoveredTextExtractor.
+            FeatureExtractor1<Token> tokenFeatureExtractor = new FeatureFunctionExtractor<>(
+                    // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
+                    new CoveredTextExtractor<Token>(),
+                    // feature function that produces the lower cased word (based on the output of the CoveredTextExtractor)
+                    new LowerCaseFeatureFunction(),
+                    // feature function that produces the capitalization type of the word (e.g. all uppercase, all lowercase...)
+                    new CapitalTypeFeatureFunction(),
+                    // feature function that produces the numeric type of the word (numeric, alphanumeric...)
+                    new NumericTypeFeatureFunction(),
+                    // feature function that produces the suffix of the word as character bigram (last two chars of the word)
+                    new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 2),
+                    // feature function that produces the suffix of the word as character trigram (last three chars of the word)
+                    new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 3));
 
-            this.contextFeatureExtractor = new CleartkExtractor<Token, Token>(Token.class,
-                    new CoveredTextExtractor<Token>(), new Preceding(2), new Following(2));
+            // create a feature extractor that extracts the surrounding token texts (within the same sentence)
+            CleartkExtractor<Token, Token> contextFeatureExtractor = new CleartkExtractor<>(Token.class,
+                    // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
+                    new CoveredTextExtractor<>(),
+                    // also include the two preceding words
+                    new CleartkExtractor.Preceding(2),
+                    // and the two following words
+                    new CleartkExtractor.Following(2));
 
-            features.add(new FeatureFunctionExtractor<Token>(new PersonNameExtractor(new File("src/main/resources/ner/name.list"))));
 
-            features.add(stemExtractor);
-            features.add(tokenFeatureExtractor);
-            features.add(contextFeatureExtractor);
+            // create the custom feature extractors
+            featureExtractors.add(new FeatureFunctionExtractor<>(
+                    // the custom person name extractor
+                    new PersonNameExtractor(new File("src/main/resources/ner/name.list"))));
 
-        } else {// load the settings from a file
+            // add all the extractors to the list of feature extractors that'll be used in the process method
+            featureExtractors.add(stemExtractor);
+            featureExtractors.add(tokenFeatureExtractor);
+            featureExtractors.add(contextFeatureExtractor);
+
+        } else {
+            // load the settings from a file
             // initialize the XStream if a xml file is given:
             XStream xstream = XStreamFactory.createXStream();
-            features = (List<FeatureExtractor1<Token>>) xstream.fromXML(new File(featureExtractionFile));
+            featureExtractors = (List<FeatureExtractor1<Token>>) xstream.fromXML(new File(featureExtractionFile));
         }
 
     }
@@ -93,15 +116,22 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
     @SuppressWarnings("unchecked")
     @Override
     public void process(JCas jCas) throws AnalysisEngineProcessException {
+        //iterate over all sentences in the document (represented by the JCas instance)
         for (Sentence sentence : select(jCas, Sentence.class)) {
-            // list of instances -> instance is just a list of features with an classifier output of type T = string
-            List<Instance<String>> instances = new ArrayList<Instance<String>>();
-            List<Token> tokens = selectCovered(jCas, Token.class, sentence);
-            for (Token token : tokens) {
 
-                Instance<String> instance = new Instance<String>();
+            // list of instances -> instance is just a list of features represented by (in this case by T=) String
+            List<Instance<String>> instances = new ArrayList<>();
 
-                for (FeatureExtractor1<Token> extractor : this.features) {
+            // iterate over all tokens in the sentence
+            List<Token> tokensInSentence = selectCovered(jCas, Token.class, sentence);
+            for (Token token : tokensInSentence) {
+
+                //the features of the token
+                Instance<String> instance = new Instance<>();
+
+                // apply all feature extractors on the token
+                for (FeatureExtractor1<Token> extractor : this.featureExtractors) {
+                    // special handling of ClearTkExtractors
                     if (extractor instanceof CleartkExtractor) {
                         instance.addAll(
                                 (((CleartkExtractor<Token, Token>) extractor).extractWithin(jCas, token, sentence)));
@@ -110,22 +140,32 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
                     }
                 }
 
+                // TRAINING
                 if (this.isTraining()) {
+                    // get the labeled annotation of the token (from the training data)
                     NEIOBAnnotation goldNE = JCasUtil.selectCovered(jCas, NEIOBAnnotation.class, token).get(0);
+                    // assign the the label (aka gold value ) to the list of features
                     instance.setOutcome(goldNE.getGoldValue());
                 }
-                // add the instance to the list !!!
+
+                // add the instance to the list
                 instances.add(instance);
             }
-            // differentiate between training and classifying
-            if (this.isTraining()) {
+
+            // TRAINING -> serialize instances (features of tokens) for later classification
+            if (this.isTraining())
                 this.dataWriter.write(instances);
-            } else {
+            else {
+                // CLASSIFYING -> classify the NE annotations for the tokens based the (before) gathered features of
+                // the tokens(= instances)
                 List<String> namedEntities = this.classify(instances);
                 int i = 0;
-                for (Token token : tokens) {
+                for (Token token : tokensInSentence) {
+                    // create the NE annotation for the token
                     NEIOBAnnotation namedEntity = new NEIOBAnnotation(jCas, token.getBegin(), token.getEnd());
+                    // set the predicted NE classification for the token
                     namedEntity.setPredictValue(namedEntities.get(i++));
+                    // add annotation to JCas indexes
                     namedEntity.addToIndexes();
                 }
             }
