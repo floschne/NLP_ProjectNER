@@ -1,0 +1,45 @@
+<list>
+  <TypePathExtractor>
+    <featureName>TypePath(StemValue)</featureName>
+    <focusClass>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</focusClass>
+    <path>stem/value</path>
+    <allPaths>false</allPaths>
+    <allValues>false</allValues>
+    <uniqueValues>true</uniqueValues>
+    <pathChecked>false</pathChecked>
+  </TypePathExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <org.cleartk.ml.feature.function.LowerCaseFeatureFunction/>
+      <org.cleartk.ml.feature.function.CapitalTypeFeatureFunction/>
+      <org.cleartk.ml.feature.function.NumericTypeFeatureFunction/>
+      <org.cleartk.ml.feature.function.CharacterNgramFeatureFunction>
+        <orientation>RIGHT_TO_LEFT</orientation>
+        <start>0</start>
+        <end>2</end>
+        <minimumValueLength>2</minimumValueLength>
+        <lowerCase>false</lowerCase>
+        <name>NGram_Right_0_2_2</name>
+      </org.cleartk.ml.feature.function.CharacterNgramFeatureFunction>
+    </featureFunctions>
+    <baseFeatures>INCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <CleartkExtractor>
+    <annotationClass>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</annotationClass>
+    <extractor class="CoveredTextExtractor"/>
+    <contexts>
+      <Preceding>
+        <begin>0</begin>
+        <end>2</end>
+        <name>Preceding_0_2</name>
+      </Preceding>
+      <Following>
+        <begin>0</begin>
+        <end>2</end>
+        <name>Following_0_2</name>
+      </Following>
+    </contexts>
+  </CleartkExtractor>
+</list>
+
