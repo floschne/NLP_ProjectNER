@@ -8,5 +8,25 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+### intelliJ ###
+.idea/
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+
+# JDT-specific (Eclipse Java Development Tools)		
+.classpath
+
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
