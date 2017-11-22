@@ -69,7 +69,7 @@ public class ExecuteNER {
 				nerReader,
 				snowballStemmer,
 				nerAnnotator/*
-							 * , TODO: replace this with your NER consumer
+							 * , TODO: Replace this with your NER consumer
 							 * createEngine(AnalyzeFeatures.class, AnalyzeFeatures.PARAM_INPUT_FILE,
 							 * testPosFile.getAbsolutePath(),
 							 * AnalyzeFeatures.PARAM_TOKEN_VALUE_PATH, "pos/PosValue")
