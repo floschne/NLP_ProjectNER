@@ -1,12 +1,11 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.annotator;
 
-import static org.apache.uima.fit.util.JCasUtil.select;
-import static org.apache.uima.fit.util.JCasUtil.selectCovered;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.thoughtworks.xstream.XStream;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.xml.XStreamFactory;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -16,25 +15,18 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkSequenceAnnotator;
 import org.cleartk.ml.Instance;
 import org.cleartk.ml.feature.extractor.CleartkExtractor;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Following;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Preceding;
 import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.extractor.TypePathExtractor;
-import org.cleartk.ml.feature.function.CapitalTypeFeatureFunction;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction.Orientation;
-import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
-import org.cleartk.ml.feature.function.LowerCaseFeatureFunction;
-import org.cleartk.ml.feature.function.NumericTypeFeatureFunction;
+import org.cleartk.ml.feature.function.*;
 
-import com.thoughtworks.xstream.XStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.PersonNameExtractor;
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.xml.XStreamFactory;
+import static org.apache.uima.fit.util.JCasUtil.select;
+import static org.apache.uima.fit.util.JCasUtil.selectCovered;
 
 
 public class NERAnnotator extends CleartkSequenceAnnotator<String> {
@@ -60,8 +52,6 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
         super.initialize(context);
         // instantiate and add feature extractors
         if (featureExtractionFile == null) {
-            CharacterNgramFeatureFunction.Orientation fromRight = Orientation.RIGHT_TO_LEFT;
-
             TypePathExtractor<Token> stemExtractor = new TypePathExtractor<>(Token.class, "stem/value");
 
             // create a function feature extractor that creates features corresponding to the token
@@ -95,22 +85,43 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
 
 
             // create the custom feature extractors
-            featureExtractors.add(new FeatureFunctionExtractor<>(
-                    // the custom person name extractor
-                    new PersonNameExtractor(new File("src/main/resources/ner/name.list"))));
+            try {
+                FeatureFunctionExtractor personName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/fullNames.txt"), "personName"));
+                FeatureFunctionExtractor surName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/foreNames.txt"), "foreName"));
+                FeatureFunctionExtractor foreName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/surNames.txt"), "surName"));
+                FeatureFunctionExtractor germanCityName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/germanCityNames.txt"), "cityName"));
+                FeatureFunctionExtractor germanCountryName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/germanCountryNames.txt"), "cityName"));
+                FeatureFunctionExtractor englishCountryName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/englishCountryNames.txt"), "countryName"));
+                FeatureFunctionExtractor organizationName = new FeatureFunctionExtractor<>(
+                        new NEListExtractor(new File("src/main/resources/ner/germanOrganizationNames.txt"), "organizationName"));
+
+                featureExtractors.add(personName);
+                featureExtractors.add(surName);
+                featureExtractors.add(foreName);
+                featureExtractors.add(germanCityName);
+                featureExtractors.add(germanCountryName);
+                featureExtractors.add(englishCountryName);
+                featureExtractors.add(organizationName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             // add all the extractors to the list of feature extractors that'll be used in the process method
             featureExtractors.add(stemExtractor);
             featureExtractors.add(tokenFeatureExtractor);
             featureExtractors.add(contextFeatureExtractor);
-
         } else {
             // load the settings from a file
             // initialize the XStream if a xml file is given:
             XStream xstream = XStreamFactory.createXStream();
             featureExtractors = (List<FeatureExtractor1<Token>>) xstream.fromXML(new File(featureExtractionFile));
         }
-
     }
 
     @SuppressWarnings("unchecked")
