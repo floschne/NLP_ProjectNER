@@ -1,8 +1,11 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.ner;
 
-import de.tudarmstadt.ukp.dkpro.core.snowball.SnowballStemmer;
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.annotator.NERAnnotator;
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.reader.NERReader;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngine;
+import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
+
+import java.io.File;
+import java.io.IOException;
+
 import org.apache.uima.UIMAException;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -15,11 +18,9 @@ import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.util.cr.FilesCollectionReader;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngine;
-import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
+import de.tudarmstadt.ukp.dkpro.core.snowball.SnowballStemmer;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.annotator.NERAnnotator;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.reader.NERReader;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.writer.NERWriter;
 
 public class ExecuteNER {
@@ -66,6 +67,7 @@ public class ExecuteNER {
 		NERWriter.PARAM_NULL_TYPE, "O",
 				NERWriter.PARAM_EXPECTED_ENTITY_TYPE_NUM, 9,
 				NERWriter.PARAM_VERBOSE, true);
+
 		runPipeline(
 				testPosFileReader,
 				nerReader,
