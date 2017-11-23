@@ -1,0 +1,264 @@
+LOC Afghanistan
+LOC Albania
+LOC Algeria
+LOC American Samoa
+LOC Andorra
+LOC Angola
+LOC Anguilla
+LOC Antarctica
+LOC Antigua and Barbuda
+LOC Argentina
+LOC Armenia
+LOC Aruba
+LOC Australia
+LOC Austria
+LOC Azerbaijan
+LOC Bahamas
+LOC Bahrain
+LOC Bangladesh
+LOC Barbados
+LOC Belarus
+LOC Belgium
+LOC Belize
+LOC Benin
+LOC Bermuda
+LOC Bhutan
+LOC Bolivia
+LOC Bosnia and Herzegovina
+LOC Botswana
+LOC Bouvet Island
+LOC Brazil
+LOC British Antarctic Territory
+LOC British Indian Ocean Territory
+LOC British Virgin Islands
+LOC Brunei
+LOC Bulgaria
+LOC Burkina Faso
+LOC Burundi
+LOC Cambodia
+LOC Cameroon
+LOC Canada
+LOC Canton and Enderbury Islands
+LOC Cape Verde
+LOC Cayman Islands
+LOC Central African Republic
+LOC Chad
+LOC Chile
+LOC China
+LOC Christmas Island
+LOC Cocos [Keeling] Islands
+LOC Colombia
+LOC Comoros
+LOC Congo - Brazzaville
+LOC Congo - Kinshasa
+LOC Cook Islands
+LOC Costa Rica
+LOC Croatia
+LOC Cuba
+LOC Cyprus
+LOC Czech Republic
+LOC Côte d’Ivoire
+LOC Denmark
+LOC Djibouti
+LOC Dominica
+LOC Dominican Republic
+LOC Dronning Maud Land
+LOC East Germany
+LOC Ecuador
+LOC Egypt
+LOC El Salvador
+LOC Equatorial Guinea
+LOC Eritrea
+LOC Estonia
+LOC Ethiopia
+LOC Falkland Islands
+LOC Faroe Islands
+LOC Fiji
+LOC Finland
+LOC France
+LOC French Guiana
+LOC French Polynesia
+LOC French Southern Territories
+LOC French Southern and Antarctic Territories
+LOC Gabon
+LOC Gambia
+LOC Georgia
+LOC Germany
+LOC Ghana
+LOC Gibraltar
+LOC Greece
+LOC Greenland
+LOC Grenada
+LOC Guadeloupe
+LOC Guam
+LOC Guatemala
+LOC Guernsey
+LOC Guinea
+LOC Guinea-Bissau
+LOC Guyana
+LOC Haiti
+LOC Heard Island and McDonald Islands
+LOC Honduras
+LOC Hong Kong SAR China
+LOC Hungary
+LOC Iceland
+LOC India
+LOC Indonesia
+LOC Iran
+LOC Iraq
+LOC Ireland
+LOC Isle of Man
+LOC Israel
+LOC Italy
+LOC Jamaica
+LOC Japan
+LOC Jersey
+LOC Johnston Island
+LOC Jordan
+LOC Kazakhstan
+LOC Kenya
+LOC Kiribati
+LOC Kuwait
+LOC Kyrgyzstan
+LOC Laos
+LOC Latvia
+LOC Lebanon
+LOC Lesotho
+LOC Liberia
+LOC Libya
+LOC Liechtenstein
+LOC Lithuania
+LOC Luxembourg
+LOC Macau SAR China
+LOC Macedonia
+LOC Madagascar
+LOC Malawi
+LOC Malaysia
+LOC Maldives
+LOC Mali
+LOC Malta
+LOC Marshall Islands
+LOC Martinique
+LOC Mauritania
+LOC Mauritius
+LOC Mayotte
+LOC Metropolitan France
+LOC Mexico
+LOC Micronesia
+LOC Midway Islands
+LOC Moldova
+LOC Monaco
+LOC Mongolia
+LOC Montenegro
+LOC Montserrat
+LOC Morocco
+LOC Mozambique
+LOC Myanmar [Burma]
+LOC Namibia
+LOC Nauru
+LOC Nepal
+LOC Netherlands
+LOC Netherlands Antilles
+LOC Neutral Zone
+LOC New Caledonia
+LOC New Zealand
+LOC Nicaragua
+LOC Niger
+LOC Nigeria
+LOC Niue
+LOC Norfolk Island
+LOC North Korea
+LOC North Vietnam
+LOC Northern Mariana Islands
+LOC Norway
+LOC Oman
+LOC Pacific Islands Trust Territory
+LOC Pakistan
+LOC Palau
+LOC Palestinian Territories
+LOC Panama
+LOC Panama Canal Zone
+LOC Papua New Guinea
+LOC Paraguay
+LOC People's Democratic Republic of Yemen
+LOC Peru
+LOC Philippines
+LOC Pitcairn Islands
+LOC Poland
+LOC Portugal
+LOC Puerto Rico
+LOC Qatar
+LOC Romania
+LOC Russia
+LOC Rwanda
+LOC Réunion
+LOC Saint Barthélemy
+LOC Saint Helena
+LOC Saint Kitts and Nevis
+LOC Saint Lucia
+LOC Saint Martin
+LOC Saint Pierre and Miquelon
+LOC Saint Vincent and the Grenadines
+LOC Samoa
+LOC San Marino
+LOC Saudi Arabia
+LOC Senegal
+LOC Serbia
+LOC Serbia and Montenegro
+LOC Seychelles
+LOC Sierra Leone
+LOC Singapore
+LOC Slovakia
+LOC Slovenia
+LOC Solomon Islands
+LOC Somalia
+LOC South Africa
+LOC South Georgia and the South Sandwich Islands
+LOC South Korea
+LOC Spain
+LOC Sri Lanka
+LOC Sudan
+LOC Suriname
+LOC Svalbard and Jan Mayen
+LOC Swaziland
+LOC Sweden
+LOC Switzerland
+LOC Syria
+LOC São Tomé and Príncipe
+LOC Taiwan
+LOC Tajikistan
+LOC Tanzania
+LOC Thailand
+LOC Timor-Leste
+LOC Togo
+LOC Tokelau
+LOC Tonga
+LOC Trinidad and Tobago
+LOC Tunisia
+LOC Turkey
+LOC Turkmenistan
+LOC Turks and Caicos Islands
+LOC Tuvalu
+LOC U.S. Minor Outlying Islands
+LOC U.S. Miscellaneous Pacific Islands
+LOC U.S. Virgin Islands
+LOC Uganda
+LOC Ukraine
+LOC Union of Soviet Socialist Republics
+LOC United Arab Emirates
+LOC United Kingdom
+LOC United States
+LOC Unknown or Invalid Region
+LOC Uruguay
+LOC Uzbekistan
+LOC Vanuatu
+LOC Vatican City
+LOC Venezuela
+LOC Vietnam
+LOC Wake Island
+LOC Wallis and Futuna
+LOC Western Sahara
+LOC Yemen
+LOC Zambia
+LOC Zimbabwe
+LOC Åland Islands

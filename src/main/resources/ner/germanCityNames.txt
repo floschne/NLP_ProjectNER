@@ -1,0 +1,2091 @@
+LOC Berlin
+LOC Hamburg
+LOC Munich
+LOC Cologne
+LOC Frankfurt
+LOC Stuttgart
+LOC Düsseldorf
+LOC Dortmund
+LOC Essen
+LOC Leipzig
+LOC Bremen
+LOC Dresden
+LOC Hanover
+LOC Nuremberg
+LOC Duisburg
+LOC Bochum
+LOC Wuppertal
+LOC Bielefeld
+LOC Bonn
+LOC Münster
+LOC Karlsruhe
+LOC Mannheim
+LOC Augsburg
+LOC Wiesbaden
+LOC Gelsenkirchen
+LOC Mönchengladbach
+LOC Braunschweig
+LOC Chemnitz
+LOC Kiel
+LOC Aachen
+LOC Halle
+LOC Magdeburg
+LOC Freiburg
+LOC Krefeld
+LOC Lübeck
+LOC Oberhausen
+LOC Erfurt
+LOC Mainz
+LOC Rostock
+LOC Kassel
+LOC Hagen
+LOC Hamm
+LOC Saarbrücken
+LOC MülheimanderRuhr
+LOC Potsdam
+LOC LudwigshafenamRhein
+LOC Oldenburg
+LOC Leverkusen
+LOC Osnabrück
+LOC Aach
+LOC Aachen
+LOC Aalen
+LOC Abenberg
+LOC Abensberg
+LOC Achern
+LOC Achim
+LOC Adelsheim
+LOC Adenau
+LOC Adorf/Vogtl.
+LOC Ahaus
+LOC Ahlen
+LOC Ahrensburg
+LOC Aichach
+LOC Aichtal
+LOC Aken
+LOC Albstadt
+LOC Alfeld
+LOC Allendorf
+LOC Allstedt
+LOC Alpirsbach
+LOC Alsdorf
+LOC Alsfeld
+LOC Alsleben
+LOC Altdorf bei Nürnberg
+LOC Altena
+LOC Altenberg
+LOC Altenburg
+LOC Altenkirchen
+LOC Altensteig
+LOC Altentreptow
+LOC Altlandsberg
+LOC Altötting
+LOC Alzenau
+LOC Alzey
+LOC Amberg
+LOC Amöneburg
+LOC Amorbach
+LOC Andernach
+LOC Angermünde
+LOC Anklam, Hansestadt
+LOC Annaberg-Buchholz
+LOC Annaburg
+LOC Annweiler am Trifels
+LOC Ansbach
+LOC Apolda
+LOC Arendsee
+LOC Arneburg
+LOC Arnis
+LOC Arnsberg
+LOC Arnstadt
+LOC Arnstein
+LOC Arnstein
+LOC Artern/Unstrut
+LOC Arzberg
+LOC Aschaffenburg
+LOC Aschersleben
+LOC Asperg
+LOC Aßlar
+LOC Attendorn
+LOC Aub
+LOC Aue
+LOC Auerbach in der Oberpfalz
+LOC Auerbach/Vogtl.
+LOC Augsburg
+LOC Augustusburg
+LOC Aulendorf
+LOC Auma-Weidatal
+LOC Aurich
+LOC Babenhausen
+LOC Bacharach
+LOC Backnang
+LOC Bad Aibling
+LOC Bad Arolsen
+LOC Bad Belzig
+LOC Bad Bentheim
+LOC Bad Bergzabern
+LOC Bad Berka
+LOC Bad Berleburg
+LOC Bad Berneck im Fichtelgebirge
+LOC Bad Bevensen
+LOC Bad Bibra
+LOC Bad Blankenburg
+LOC Bad Bramstedt
+LOC Bad Breisig
+LOC Bad Brückenau
+LOC Bad Buchau
+LOC Bad Camberg
+LOC Bad Colberg-Heldburg
+LOC Bad Doberan
+LOC Bad Driburg
+LOC Bad Düben
+LOC Bad Dürkheim
+LOC Bad Dürrenberg
+LOC Bad Dürrheim
+LOC Bad Elster
+LOC Bad Ems
+LOC Baden-Baden
+LOC Bad Fallingbostel
+LOC Bad Frankenhausen/Kyffhäuser
+LOC Bad Freienwalde
+LOC Bad Friedrichshall
+LOC Bad Gandersheim
+LOC Bad Gottleuba-Berggießhübel
+LOC Bad Griesbach im Rottal
+LOC Bad Harzburg
+LOC Bad Herrenalb
+LOC Bad Hersfeld
+LOC Bad Homburg vor der Höhe
+LOC Bad Honnef
+LOC Bad Hönningen
+LOC Bad Iburg
+LOC Bad Karlshafen
+LOC Bad Kissingen
+LOC Bad König
+LOC Bad Königshofen im Grabfeld
+LOC Bad Köstritz
+LOC Bad Kötzting
+LOC Bad Kreuznach
+LOC Bad Krozingen
+LOC Bad Laasphe
+LOC Bad Langensalza
+LOC Bad Lauchstädt
+LOC Bad Lausick
+LOC Bad Lauterberg im Harz
+LOC Bad Liebenstein
+LOC Bad Liebenwerda
+LOC Bad Liebenzell
+LOC Bad Lippspringe
+LOC Bad Lobenstein
+LOC Bad Marienberg
+LOC Bad Mergentheim
+LOC Bad Münder am Deister
+LOC Bad Münstereifel
+LOC Bad Muskau
+LOC Bad Nauheim
+LOC Bad Nenndorf
+LOC Bad Neuenahr-Ahrweiler
+LOC Bad Neustadt an der Saale
+LOC Bad Oeynhausen
+LOC Bad Oldesloe
+LOC Bad Orb
+LOC Bad Pyrmont
+LOC Bad Rappenau
+LOC Bad Reichenhall
+LOC Bad Rodach
+LOC Bad Sachsa
+LOC Bad Säckingen
+LOC Bad Salzdetfurth
+LOC Bad Salzuflen
+LOC Bad Salzungen
+LOC Bad Saulgau
+LOC Bad Schandau
+LOC Bad Schmiedeberg
+LOC Bad Schussenried
+LOC Bad Schwalbach
+LOC Bad Schwartau
+LOC Bad Segeberg
+LOC Bad Sobernheim
+LOC Bad Soden am Taunus
+LOC Bad Soden-Salmünster
+LOC Bad Sooden-Allendorf
+LOC Bad Staffelstein
+LOC Bad Sulza
+LOC Bad Sülze
+LOC Bad Teinach-Zavelstein
+LOC Bad Tennstedt
+LOC Bad Tölz
+LOC Bad Urach
+LOC Bad Vilbel
+LOC Bad Waldsee
+LOC Bad Wildbad
+LOC Bad Wildungen
+LOC Bad Wilsnack
+LOC Bad Wimpfen
+LOC Bad Windsheim
+LOC Bad Wörishofen
+LOC Bad Wünnenberg
+LOC Bad Wurzach
+LOC Baesweiler
+LOC Baiersdorf
+LOC Balingen
+LOC Ballenstedt
+LOC Balve
+LOC Bamberg
+LOC Barby
+LOC Bargteheide
+LOC Barmstedt
+LOC Bärnau
+LOC Barntrup
+LOC Barsinghausen
+LOC Barth
+LOC Baruth/Mark
+LOC Bassum
+LOC Battenberg
+LOC Baumholder
+LOC Baunach
+LOC Baunatal
+LOC Bautzen
+LOC Bayreuth
+LOC Bebra
+LOC Beckum
+LOC Bedburg
+LOC Beelitz
+LOC Beerfelden
+LOC Beeskow
+LOC Beilngries
+LOC Beilstein
+LOC Belgern-Schildau
+LOC Bendorf
+LOC Bensheim
+LOC Berching
+LOC Berga/Elster
+LOC Bergen
+LOC Bergen auf Rügen
+LOC Bergheim
+LOC Bergisch Gladbach
+LOC Bergkamen
+LOC Bergneustadt
+LOC Berka/Werra
+LOC Berlin
+LOC Bernau bei Berlin
+LOC Bernburg
+LOC Bernkastel-Kues
+LOC Bernsdorf
+LOC Bernstadt a. d. Eigen
+LOC Bersenbrück
+LOC Besigheim
+LOC Betzdorf
+LOC Betzenstein
+LOC Beverungen
+LOC Bexbach
+LOC Biberach an der Riß
+LOC Biedenkopf
+LOC Bielefeld
+LOC Biesenthal
+LOC Bietigheim-Bissingen
+LOC Billerbeck
+LOC Bingen am Rhein
+LOC Birkenfeld
+LOC Bischofsheim an der Rhön
+LOC Bischofswerda
+LOC Bismark
+LOC Bitburg
+LOC Bitterfeld-Wolfen
+LOC Blankenburg
+LOC Blankenhain
+LOC Blaubeuren
+LOC Blaustein
+LOC Bleckede
+LOC Bleicherode
+LOC Blieskastel
+LOC Blomberg
+LOC Blumberg
+LOC Bobingen
+LOC Böblingen
+LOC Bocholt
+LOC Bochum
+LOC Bockenem
+LOC Bodenwerder
+LOC Bogen
+LOC Böhlen
+LOC Boizenburg/Elbe
+LOC Bonn
+LOC Bonndorf im Schwarzwald
+LOC Bönnigheim
+LOC Bopfingen
+LOC Boppard
+LOC Borgentreich
+LOC Borgholzhausen
+LOC Borken
+LOC Borken
+LOC Borkum
+LOC Borna
+LOC Bornheim
+LOC Bottrop
+LOC Boxberg
+LOC Brackenheim
+LOC Brake
+LOC Brakel
+LOC Bramsche
+LOC Brandenburg an der Havel
+LOC Brand-Erbisdorf
+LOC Brandis
+LOC Braubach
+LOC Braunfels
+LOC Braunlage
+LOC Bräunlingen
+LOC Braunsbedra
+LOC Braunschweig
+LOC Breckerfeld
+LOC Bredstedt
+LOC Breisach am Rhein
+LOC Bremen, Freie Hansestadt
+LOC Bremerhaven
+LOC Bremervörde
+LOC Bretten
+LOC Breuberg
+LOC Brilon
+LOC Brotterode-Trusetal
+LOC Bruchköbel
+LOC Bruchsal
+LOC Brück
+LOC Brüel
+LOC Brühl
+LOC Brunsbüttel
+LOC Brüssow
+LOC Buchen
+LOC Buchholz in der Nordheide
+LOC Buchloe
+LOC Bückeburg
+LOC Buckow
+LOC Büdelsdorf
+LOC Büdingen
+LOC Bühl
+LOC Bünde
+LOC Büren
+LOC Burg
+LOC Burgau
+LOC Burgbernheim
+LOC Burgdorf
+LOC Bürgel
+LOC Burghausen
+LOC Burgkunstadt
+LOC Burglengenfeld
+LOC Burgstädt
+LOC Burg Stargard
+LOC Burgwedel
+LOC Burladingen
+LOC Burscheid
+LOC Bürstadt
+LOC Buttelstedt
+LOC Buttstädt
+LOC Butzbach
+LOC Bützow
+LOC Buxtehude
+LOC Calau
+LOC Calbe
+LOC Calw
+LOC Castrop-Rauxel
+LOC Celle
+LOC Cham
+LOC Chemnitz
+LOC Clausthal-Zellerfeld
+LOC Clingen
+LOC Cloppenburg
+LOC Coburg
+LOC Cochem
+LOC Coesfeld
+LOC Colditz
+LOC Coswig
+LOC Coswig
+LOC Cottbus
+LOC Crailsheim
+LOC Creglingen
+LOC Creußen
+LOC Creuzburg
+LOC Crimmitschau
+LOC Crivitz
+LOC Cuxhaven
+LOC Dachau
+LOC Dahlen
+LOC Dahme/Mark
+LOC Dahn
+LOC Damme
+LOC Dannenberg
+LOC Dargun
+LOC Darmstadt
+LOC Dassel
+LOC Dassow
+LOC Datteln
+LOC Daun
+LOC Deggendorf
+LOC Deidesheim
+LOC Delbrück
+LOC Delitzsch
+LOC Delmenhorst
+LOC Demmin, Hansestadt
+LOC Dessau-Roßlau
+LOC Detmold
+LOC Dettelbach
+LOC Dieburg
+LOC Diemelstadt
+LOC Diepholz
+LOC Dierdorf
+LOC Dietenheim
+LOC Dietfurt an der Altmühl
+LOC Dietzenbach
+LOC Diez
+LOC Dillenburg
+LOC Dillingen an der Donau
+LOC Dillingen/Saar
+LOC Dingelstädt
+LOC Dingolfing
+LOC Dinkelsbühl
+LOC Dinklage
+LOC Dinslaken
+LOC Dippoldiswalde
+LOC Dissen am Teutoburger Wald
+LOC Ditzingen
+LOC Döbeln
+LOC Doberlug-Kirchhain
+LOC Döbern
+LOC Dohna
+LOC Dömitz
+LOC Dommitzsch
+LOC Donaueschingen
+LOC Donauwörth
+LOC Donzdorf
+LOC Dorfen
+LOC Dormagen
+LOC Dornburg-Camburg
+LOC Dornhan
+LOC Dornstetten
+LOC Dorsten
+LOC Dortmund
+LOC Dransfeld
+LOC Drebkau
+LOC Dreieich
+LOC Drensteinfurt
+LOC Dresden
+LOC Drolshagen
+LOC Duderstadt
+LOC Duisburg
+LOC Dülmen
+LOC Düren
+LOC Düsseldorf
+LOC Ebeleben
+LOC Eberbach
+LOC Ebermannstadt
+LOC Ebern
+LOC Ebersbach an der Fils
+LOC Ebersbach-Neugersdorf
+LOC Ebersberg
+LOC Eberswalde
+LOC Eckartsberga
+LOC Eckernförde
+LOC Edenkoben
+LOC Egeln
+LOC Eggenfelden
+LOC Eggesin
+LOC Ehingen
+LOC Ehrenfriedersdorf
+LOC Eibelstadt
+LOC Eibenstock
+LOC Eichstätt
+LOC Eilenburg
+LOC Einbeck
+LOC Eisenach
+LOC Eisenberg
+LOC Eisenberg
+LOC Eisenhüttenstadt
+LOC Eisfeld
+LOC Eisleben, Lutherstadt
+LOC Eislingen/Fils
+LOC Ellingen
+LOC Ellrich
+LOC Ellwangen
+LOC Elmshorn
+LOC Elsdorf
+LOC Elsfleth
+LOC Elsterberg
+LOC Elsterwerda
+LOC Elstra
+LOC Elterlein
+LOC Eltmann
+LOC Eltville am Rhein
+LOC Elzach
+LOC Elze
+LOC Emden
+LOC Emmelshausen
+LOC Emmendingen
+LOC Emmerich am Rhein
+LOC Emsdetten
+LOC Endingen am Kaiserstuhl
+LOC Engen
+LOC Enger
+LOC Ennepetal
+LOC Ennigerloh
+LOC Eppelheim
+LOC Eppingen
+LOC Eppstein
+LOC Erbach
+LOC Erbach
+LOC Erbendorf
+LOC Erding
+LOC Erftstadt
+LOC Erfurt
+LOC Erkelenz
+LOC Erkner
+LOC Erkrath
+LOC Erlangen
+LOC Erlenbach am Main
+LOC Erlensee
+LOC Erwitte
+LOC Eschborn
+LOC Eschenbach in der Oberpfalz
+LOC Eschershausen
+LOC Eschwege
+LOC Eschweiler
+LOC Esens
+LOC Espelkamp
+LOC Essen
+LOC Esslingen am Neckar
+LOC Ettenheim
+LOC Ettlingen
+LOC Euskirchen
+LOC Eutin
+LOC Falkenberg/Elster
+LOC Falkensee
+LOC Falkenstein/Harz
+LOC Falkenstein/Vogtl.
+LOC Fehmarn
+LOC Fellbach
+LOC Felsberg
+LOC Feuchtwangen
+LOC Filderstadt
+LOC Finsterwalde
+LOC Fladungen
+LOC Flensburg
+LOC Flöha
+LOC Flörsheim am Main
+LOC Florstadt
+LOC Forchheim
+LOC Forchtenberg
+LOC Forst
+LOC Frankenau
+LOC Frankenberg
+LOC Frankenberg/Sa.
+LOC Frankenthal
+LOC Frankfurt am Main
+LOC Frankfurt
+LOC Franzburg
+LOC Frauenstein
+LOC Frechen
+LOC Freiberg am Neckar
+LOC Freiberg
+LOC Freiburg im Breisgau
+LOC Freilassing
+LOC Freinsheim
+LOC Freising
+LOC Freital
+LOC Freren
+LOC Freudenberg
+LOC Freudenberg
+LOC Freudenstadt
+LOC Freyburg
+LOC Freystadt
+LOC Freyung
+LOC Fridingen an der Donau
+LOC Friedberg
+LOC Friedberg
+LOC Friedland
+LOC Friedland
+LOC Friedrichroda
+LOC Friedrichsdorf
+LOC Friedrichshafen
+LOC Friedrichstadt
+LOC Friedrichsthal
+LOC Friesack
+LOC Friesoythe
+LOC Fritzlar
+LOC Frohburg
+LOC Fröndenberg/Ruhr
+LOC Fulda
+LOC Fürstenau
+LOC Fürstenberg/Havel
+LOC Fürstenfeldbruck
+LOC Fürstenwalde/Spree
+LOC Fürth
+LOC Furth im Wald
+LOC Furtwangen im Schwarzwald
+LOC Füssen
+LOC Gadebusch
+LOC Gaggenau
+LOC Gaildorf
+LOC Gammertingen
+LOC Garbsen
+LOC Garching bei München
+LOC Gardelegen
+LOC Garding
+LOC Gartz
+LOC Garz/Rügen
+LOC Gau-Algesheim
+LOC Gebesee
+LOC Gedern
+LOC Geesthacht
+LOC Geestland
+LOC Gefell
+LOC Gefrees
+LOC Gehrden
+LOC Gehren
+LOC Geilenkirchen
+LOC Geisa
+LOC Geiselhöring
+LOC Geisenfeld
+LOC Geisenheim
+LOC Geisingen
+LOC Geislingen
+LOC Geislingen an der Steige
+LOC Geithain
+LOC Geldern
+LOC Gelnhausen
+LOC Gelsenkirchen
+LOC Gemünden am Main
+LOC Gemünden
+LOC Gengenbach
+LOC Genthin
+LOC Georgsmarienhütte
+LOC Gera
+LOC Gerabronn
+LOC Gerbstedt
+LOC Geretsried
+LOC Geringswalde
+LOC Gerlingen
+LOC Germering
+LOC Germersheim
+LOC Gernsbach
+LOC Gernsheim
+LOC Gerolstein
+LOC Gerolzhofen
+LOC Gersfeld
+LOC Gersthofen
+LOC Gescher
+LOC Geseke
+LOC Gevelsberg
+LOC Geyer
+LOC Giengen an der Brenz
+LOC Gießen
+LOC Gifhorn
+LOC Ginsheim-Gustavsburg
+LOC Gladbeck
+LOC Gladenbach
+LOC Glashütte
+LOC Glauchau
+LOC Glinde
+LOC Glücksburg
+LOC Glückstadt
+LOC Gnoien
+LOC Goch
+LOC Goldberg
+LOC Goldkronach
+LOC Golßen
+LOC Gommern
+LOC Göppingen
+LOC Görlitz
+LOC Goslar
+LOC Gößnitz
+LOC Gotha
+LOC Göttingen
+LOC Grabow
+LOC Grafenau
+LOC Gräfenberg
+LOC Gräfenhainichen
+LOC Gräfenthal
+LOC Grafenwöhr
+LOC Grafing bei München
+LOC Gransee
+LOC Grebenau
+LOC Grebenstein
+LOC Greding
+LOC Greifswald, Hansestadt
+LOC Greiz
+LOC Greußen
+LOC Greven
+LOC Grevenbroich
+LOC Grevesmühlen
+LOC Griesheim
+LOC Grimma
+LOC Grimmen
+LOC Gröditz
+LOC Groitzsch
+LOC Gronau
+LOC Gronau (Westf.)
+LOC Gröningen
+LOC Großalmerode
+LOC Groß-Bieberau
+LOC Großbottwar
+LOC Großbreitenbach
+LOC Großenehrich
+LOC Großenhain
+LOC Groß-Gerau
+LOC Großräschen
+LOC Großröhrsdorf
+LOC Großschirma
+LOC Groß-Umstadt
+LOC Grünberg
+LOC Grünhain-Beierfeld
+LOC Grünsfeld
+LOC Grünstadt
+LOC Guben
+LOC Gudensberg
+LOC Güglingen
+LOC Gummersbach
+LOC Gundelfingen an der Donau
+LOC Gundelsheim
+LOC Günzburg
+LOC Gunzenhausen
+LOC Güsten
+LOC Güstrow
+LOC Gütersloh
+LOC Gützkow
+LOC Haan
+LOC Hachenburg
+LOC Hadamar
+LOC Hagen
+LOC Hagenbach
+LOC Hagenow
+LOC Haiger
+LOC Haigerloch
+LOC Hainichen
+LOC Haiterbach
+LOC Halberstadt
+LOC Haldensleben
+LOC Halle
+LOC Halle (Westf.)
+LOC Hallenberg
+LOC Hallstadt
+LOC Haltern am See
+LOC Halver
+LOC Hamburg, Freie und Hansestadt
+LOC Hameln
+LOC Hamm
+LOC Hammelburg
+LOC Hamminkeln
+LOC Hanau
+LOC Hannover
+LOC Hann. Münden
+LOC Harburg
+LOC Hardegsen
+LOC Haren
+LOC Harsewinkel
+LOC Hartenstein
+LOC Hartha
+LOC Harzgerode
+LOC Haselünne
+LOC Haslach im Kinzigtal
+LOC Haßfurt
+LOC Hattersheim am Main
+LOC Hattingen
+LOC Hatzfeld
+LOC Hausach
+LOC Hauzenberg
+LOC Havelberg
+LOC Havelsee
+LOC Hayingen
+LOC Hechingen
+LOC Hecklingen
+LOC Heide
+LOC Heideck
+LOC Heidelberg
+LOC Heidenau
+LOC Heidenheim an der Brenz
+LOC Heilbad Heiligenstadt
+LOC Heilbronn
+LOC Heiligenhafen
+LOC Heiligenhaus
+LOC Heilsbronn
+LOC Heimbach
+LOC Heimsheim
+LOC Heinsberg
+LOC Heitersheim
+LOC Heldrungen
+LOC Helmbrechts
+LOC Helmstedt
+LOC Hemau
+LOC Hemer
+LOC Hemmingen
+LOC Hemmoor
+LOC Hemsbach
+LOC Hennef
+LOC Hennigsdorf
+LOC Heppenheim
+LOC Herbolzheim
+LOC Herborn
+LOC Herbrechtingen
+LOC Herbstein
+LOC Herdecke
+LOC Herdorf
+LOC Herford
+LOC Heringen/Helme
+LOC Heringen
+LOC Hermeskeil
+LOC Hermsdorf
+LOC Herne
+LOC Herrenberg
+LOC Herrieden
+LOC Herrnhut
+LOC Hersbruck
+LOC Herten
+LOC Herzberg am Harz
+LOC Herzberg
+LOC Herzogenaurach
+LOC Herzogenrath
+LOC Hessisch Lichtenau
+LOC Hessisch Oldendorf
+LOC Hettingen
+LOC Hettstedt
+LOC Heubach
+LOC Heusenstamm
+LOC Hilchenbach
+LOC Hildburghausen
+LOC Hilden
+LOC Hildesheim
+LOC Hillesheim
+LOC Hilpoltstein
+LOC Hirschau
+LOC Hirschberg
+LOC Hirschhorn
+LOC Hitzacker
+LOC Hochheim am Main
+LOC Höchstadt an der Aisch
+LOC Höchstädt an der Donau
+LOC Hockenheim
+LOC Hof
+LOC Hofgeismar
+LOC Hofheim am Taunus
+LOC Hofheim in Unterfranken
+LOC Hohenberg an der Eger
+LOC Hohenleuben
+LOC Hohenmölsen
+LOC Hohen Neuendorf
+LOC Hohenstein-Ernstthal
+LOC Hohnstein
+LOC Höhr-Grenzhausen
+LOC Hollfeld
+LOC Holzgerlingen
+LOC Holzminden
+LOC Homberg
+LOC Homberg
+LOC Homburg
+LOC Horb am Neckar
+LOC Hornbach
+LOC Horn-Bad Meinberg
+LOC Hornberg
+LOC Hörstel
+LOC Horstmar
+LOC Höxter
+LOC Hoya
+LOC Hoyerswerda
+LOC Hückelhoven
+LOC Hückeswagen
+LOC Hüfingen
+LOC Hünfeld
+LOC Hungen
+LOC Hürth
+LOC Husum
+LOC Ibbenbüren
+LOC Ichenhausen
+LOC Idar-Oberstein
+LOC Idstein
+LOC Illertissen
+LOC Ilmenau
+LOC Ilsenburg
+LOC Ilshofen
+LOC Immenhausen
+LOC Immenstadt im Allgäu
+LOC Ingelfingen
+LOC Ingelheim am Rhein
+LOC Ingolstadt
+LOC Iphofen
+LOC Iserlohn
+LOC Isny im Allgäu
+LOC Isselburg
+LOC Itzehoe
+LOC Jarmen
+LOC Jena
+LOC Jerichow
+LOC Jessen
+LOC Jever
+LOC Joachimsthal
+LOC Johanngeorgenstadt
+LOC Jöhstadt
+LOC Jülich
+LOC Jüterbog
+LOC Kaarst
+LOC Kahla
+LOC Kaisersesch
+LOC Kaiserslautern
+LOC Kalbe
+LOC Kalkar
+LOC Kaltenkirchen
+LOC Kaltennordheim
+LOC Kamen
+LOC Kamenz
+LOC Kamp-Lintfort
+LOC Kandel
+LOC Kandern
+LOC Kappeln
+LOC Karben
+LOC Karlsruhe
+LOC Karlstadt
+LOC Kassel
+LOC Kastellaun
+LOC Katzenelnbogen
+LOC Kaub
+LOC Kaufbeuren
+LOC Kehl
+LOC Kelbra
+LOC Kelheim
+LOC Kelkheim
+LOC Kellinghusen
+LOC Kelsterbach
+LOC Kemberg
+LOC Kemnath
+LOC Kempen
+LOC Kempten
+LOC Kenzingen
+LOC Kerpen
+LOC Ketzin/Havel
+LOC Kevelaer
+LOC Kiel
+LOC Kierspe
+LOC Kindelbrück
+LOC Kirchberg
+LOC Kirchberg an der Jagst
+LOC Kirchberg
+LOC Kirchen
+LOC Kirchenlamitz
+LOC Kirchhain
+LOC Kirchheimbolanden
+LOC Kirchheim unter Teck
+LOC Kirn
+LOC Kirtorf
+LOC Kitzingen
+LOC Kitzscher
+LOC Kleve
+LOC Klingenberg am Main
+LOC Klingenthal
+LOC Klötze
+LOC Klütz
+LOC Knittlingen
+LOC Koblenz
+LOC Kohren-Sahlis
+LOC Kolbermoor
+LOC Kölleda
+LOC Köln
+LOC Königsberg in Bayern
+LOC Königsbrück
+LOC Königsbrunn
+LOC Königsee-Rottenbach
+LOC Königslutter am Elm
+LOC Königstein im Taunus
+LOC Königstein
+LOC Königswinter
+LOC Königs Wusterhausen
+LOC Könnern
+LOC Konstanz
+LOC Konz
+LOC Korbach
+LOC Korntal-Münchingen
+LOC Kornwestheim
+LOC Korschenbroich
+LOC Köthen
+LOC Kraichtal
+LOC Krakow am See
+LOC Kranichfeld
+LOC Krautheim
+LOC Krefeld
+LOC Kremmen
+LOC Krempe
+LOC Kreuztal
+LOC Kronach
+LOC Kronberg im Taunus
+LOC Kröpelin
+LOC Kroppenstedt
+LOC Krumbach
+LOC Kühlungsborn
+LOC Kulmbach
+LOC Külsheim
+LOC Künzelsau
+LOC Kupferberg
+LOC Kuppenheim
+LOC Kusel
+LOC Kyllburg
+LOC Kyritz
+LOC Laage
+LOC Laatzen
+LOC Ladenburg
+LOC Lage
+LOC Lahnstein
+LOC Lahr/Schwarzwald
+LOC Laichingen
+LOC Lambrecht
+LOC Lampertheim
+LOC Landau an der Isar
+LOC Landau in der Pfalz
+LOC Landsberg am Lech
+LOC Landsberg
+LOC Landshut
+LOC Landstuhl
+LOC Langelsheim
+LOC Langen
+LOC Langenau
+LOC Langenburg
+LOC Langenfeld
+LOC Langenhagen
+LOC Langenselbold
+LOC Langenzenn
+LOC Langewiesen
+LOC Lassan
+LOC Laubach
+LOC Laucha an der Unstrut
+LOC Lauchhammer
+LOC Lauchheim
+LOC Lauda-Königshofen
+LOC Lauenburg/Elbe
+LOC Lauf an der Pegnitz
+LOC Laufen
+LOC Laufenburg
+LOC Lauffen am Neckar
+LOC Lauingen
+LOC Laupheim
+LOC Lauscha
+LOC Lauta
+LOC Lauter-Bernsbach
+LOC Lauterbach
+LOC Lauterecken
+LOC Lauterstein
+LOC Lebach
+LOC Lebus
+LOC Leer
+LOC Lehesten
+LOC Lehrte
+LOC Leichlingen
+LOC Leimen
+LOC Leinefelde-Worbis
+LOC Leinfelden-Echterdingen
+LOC Leipheim
+LOC Leipzig
+LOC Leisnig
+LOC Lemgo
+LOC Lengenfeld
+LOC Lengerich
+LOC Lennestadt
+LOC Lenzen
+LOC Leonberg
+LOC Leun
+LOC Leuna
+LOC Leutenberg
+LOC Leutershausen
+LOC Leutkirch im Allgäu
+LOC Leverkusen
+LOC Lich
+LOC Lichtenau
+LOC Lichtenau
+LOC Lichtenberg
+LOC Lichtenfels
+LOC Lichtenfels
+LOC Lichtenstein/Sa.
+LOC Liebenau
+LOC Liebenwalde
+LOC Lieberose
+LOC Liebstadt
+LOC Limbach-Oberfrohna
+LOC Limburg an der Lahn
+LOC Lindau
+LOC Linden
+LOC Lindenberg im Allgäu
+LOC Lindenfels
+LOC Lindow
+LOC Lingen
+LOC Linnich
+LOC Linz am Rhein
+LOC Lippstadt
+LOC Löbau
+LOC Löffingen
+LOC Lohmar
+LOC Lohne
+LOC Löhne
+LOC Lohr am Main
+LOC Loitz
+LOC Lollar
+LOC Lommatzsch
+LOC Löningen
+LOC Lorch
+LOC Lorch
+LOC Lörrach
+LOC Lorsch
+LOC Lößnitz
+LOC Löwenstein
+LOC Lübbecke
+LOC Lübben
+LOC Lübbenau/Spreewald
+LOC Lübeck, Hansestadt
+LOC Lübtheen
+LOC Lübz
+LOC Lüchow
+LOC Lucka
+LOC Luckau
+LOC Luckenwalde
+LOC Lüdenscheid
+LOC Lüdinghausen
+LOC Ludwigsburg
+LOC Ludwigsfelde
+LOC Ludwigshafen am Rhein
+LOC Ludwigslust
+LOC Ludwigsstadt
+LOC Lugau/Erzgeb.
+LOC Lügde
+LOC Lüneburg, Hansestadt
+LOC Lünen
+LOC Lunzenau
+LOC Lütjenburg
+LOC Lützen
+LOC Lychen
+LOC Magdala
+LOC Magdeburg
+LOC Mahlberg
+LOC Mainbernheim
+LOC Mainburg
+LOC Maintal
+LOC Mainz
+LOC Malchin
+LOC Malchow
+LOC Mannheim
+LOC Manderscheid
+LOC Mansfeld
+LOC Marbach am Neckar
+LOC Marburg
+LOC Marienberg
+LOC Marienmünster
+LOC Markdorf
+LOC Markgröningen
+LOC Märkisch Buchholz
+LOC Markkleeberg
+LOC Markneukirchen
+LOC Markranstädt
+LOC Marktbreit
+LOC Marktheidenfeld
+LOC Marktleuthen
+LOC Marktoberdorf
+LOC Marktredwitz
+LOC Marktsteft
+LOC Marl
+LOC Marlow
+LOC Marne
+LOC Marsberg
+LOC Maulbronn
+LOC Maxhütte-Haidhof
+LOC Mayen
+LOC Mechernich
+LOC Meckenheim
+LOC Medebach
+LOC Meerane
+LOC Meerbusch
+LOC Meersburg
+LOC Meinerzhagen
+LOC Meiningen
+LOC Meisenheim
+LOC Meißen
+LOC Meldorf
+LOC Melle
+LOC Mellrichstadt
+LOC Melsungen
+LOC Memmingen
+LOC Menden
+LOC Mendig
+LOC Mengen
+LOC Meppen
+LOC Merkendorf
+LOC Merseburg
+LOC Merzig
+LOC Meschede
+LOC Meßkirch
+LOC Meßstetten
+LOC Mettmann
+LOC Metzingen
+LOC Meuselwitz
+LOC Meyenburg
+LOC Michelstadt
+LOC Miesbach
+LOC Miltenberg
+LOC Mindelheim
+LOC Minden
+LOC Mirow
+LOC Mittenwalde
+LOC Mitterteich
+LOC Mittweida
+LOC Möckern
+LOC Möckmühl
+LOC Moers
+LOC Mölln
+LOC Mönchengladbach
+LOC Monheim am Rhein
+LOC Monheim
+LOC Monschau
+LOC Montabaur
+LOC Moosburg an der Isar
+LOC Mörfelden-Walldorf
+LOC Moringen
+LOC Mosbach
+LOC Mössingen
+LOC Mücheln
+LOC Mügeln
+LOC Mühlacker
+LOC Mühlberg/Elbe
+LOC Mühldorf am Inn
+LOC Mühlhausen/Thüringen
+LOC Mühlheim am Main
+LOC Mühlheim an der Donau
+LOC Mülheim an der Ruhr
+LOC Mülheim-Kärlich
+LOC Müllheim
+LOC Müllrose
+LOC Münchberg
+LOC Müncheberg
+LOC München
+LOC Münchenbernsdorf
+LOC Munderkingen
+LOC Münnerstadt
+LOC Münsingen
+LOC Munster
+LOC Münster
+LOC Münstermaifeld
+LOC Münzenberg
+LOC Murrhardt
+LOC Mylau
+LOC Nabburg
+LOC Nagold
+LOC Naila
+LOC Nassau
+LOC Nastätten
+LOC Nauen
+LOC Naumburg
+LOC Naumburg
+LOC Naunhof
+LOC Nebra
+LOC Neckarbischofsheim
+LOC Neckargemünd
+LOC Neckarsteinach
+LOC Neckarsulm
+LOC Neresheim
+LOC Netphen
+LOC Nettetal
+LOC Netzschkau
+LOC Neu-Anspach
+LOC Neubrandenburg
+LOC Neubukow
+LOC Neubulach
+LOC Neuburg an der Donau
+LOC Neudenau
+LOC Neuenbürg
+LOC Neuenburg am Rhein
+LOC Neuenhaus
+LOC Neuenrade
+LOC Neuenstadt am Kocher
+LOC Neuenstein
+LOC Neuerburg
+LOC Neuffen
+LOC Neuhaus am Rennweg
+LOC Neu-Isenburg
+LOC Neukalen
+LOC Neukirchen
+LOC Neukirchen-Vluyn
+LOC Neukloster
+LOC Neumark
+LOC Neumarkt in der Oberpfalz
+LOC Neumarkt-Sankt Veit
+LOC Neumünster
+LOC Neunburg vorm Wald
+LOC Neunkirchen
+LOC Neuötting
+LOC Neuruppin
+LOC Neusalza-Spremberg
+LOC Neusäß
+LOC Neuss
+LOC Neustadt an der Aisch
+LOC Neustadt an der Donau
+LOC Neustadt an der Waldnaab
+LOC Neustadt am Kulm
+LOC Neustadt am Rübenberge
+LOC Neustadt an der Orla
+LOC Neustadt an der Weinstraße
+LOC Neustadt bei Coburg
+LOC Neustadt
+LOC Neustadt-Glewe
+LOC Neustadt
+LOC Neustadt in Holstein
+LOC Neustadt in Sachsen
+LOC Neustrelitz
+LOC Neutraubling
+LOC Neu-Ulm
+LOC Neuwied
+LOC Nidda
+LOC Niddatal
+LOC Nidderau
+LOC Nideggen
+LOC Niebüll
+LOC Niedenstein
+LOC Niederkassel
+LOC Niedernhall
+LOC Nieder-Olm
+LOC Niederstetten
+LOC Niederstotzingen
+LOC Nieheim
+LOC Niemegk
+LOC Nienburg
+LOC Nienburg/Weser
+LOC Nierstein
+LOC Niesky
+LOC Nittenau
+LOC Norden
+LOC Nordenham
+LOC Norderney
+LOC Norderstedt
+LOC Nordhausen
+LOC Nordhorn
+LOC Nördlingen
+LOC Northeim
+LOC Nortorf
+LOC Nossen
+LOC Nürnberg
+LOC Nürtingen
+LOC Oberasbach
+LOC Oberharz am Brocken
+LOC Oberhausen
+LOC Oberhof
+LOC Oberkirch
+LOC Oberkochen
+LOC Oberlungwitz
+LOC Obermoschel
+LOC Obernburg am Main
+LOC Oberndorf am Neckar
+LOC Obernkirchen
+LOC Ober-Ramstadt
+LOC Oberriexingen
+LOC Obertshausen
+LOC Oberursel
+LOC Oberviechtach
+LOC Oberweißbach/Thür. Wald
+LOC Oberwesel
+LOC Oberwiesenthal
+LOC Ochsenfurt
+LOC Ochsenhausen
+LOC Ochtrup
+LOC Oderberg
+LOC Oebisfelde-Weferlingen
+LOC Oederan
+LOC Oelde
+LOC Oelsnitz/Erzgeb.
+LOC Oelsnitz/Vogtl.
+LOC Oer-Erkenschwick
+LOC Oerlinghausen
+LOC Oestrich-Winkel
+LOC Oettingen in Bayern
+LOC Offenbach am Main
+LOC Offenburg
+LOC Ohrdruf
+LOC Öhringen
+LOC Olbernhau
+LOC Olching
+LOC Oldenburg
+LOC Oldenburg in Holstein
+LOC Olfen
+LOC Olpe
+LOC Olsberg
+LOC Oppenau
+LOC Oppenheim
+LOC Oranienbaum-Wörlitz
+LOC Oranienburg
+LOC Orlamünde
+LOC Ornbau
+LOC Ortenberg
+LOC Ortrand
+LOC Oschatz
+LOC Oschersleben
+LOC Osnabrück
+LOC Osterburg
+LOC Osterburken
+LOC Osterfeld
+LOC Osterhofen
+LOC Osterholz-Scharmbeck
+LOC Osterode am Harz
+LOC Osterwieck
+LOC Ostfildern
+LOC Ostheim vor der Rhön
+LOC Osthofen
+LOC Östringen
+LOC Ostritz
+LOC Otterberg
+LOC Otterndorf
+LOC Ottweiler
+LOC Overath
+LOC Owen
+LOC Paderborn
+LOC Papenburg
+LOC Pappenheim
+LOC Parchim
+LOC Parsberg
+LOC Pasewalk
+LOC Passau
+LOC Pattensen
+LOC Pausa-Mühltroff
+LOC Pegau
+LOC Pegnitz
+LOC Peine
+LOC Peitz
+LOC Penig
+LOC Penkun
+LOC Penzberg
+LOC Penzlin
+LOC Perleberg
+LOC Petershagen
+LOC Pfaffenhofen an der Ilm
+LOC Pfarrkirchen
+LOC Pforzheim
+LOC Pfreimd
+LOC Pfullendorf
+LOC Pfullingen
+LOC Pfungstadt
+LOC Philippsburg
+LOC Pinneberg
+LOC Pirmasens
+LOC Pirna
+LOC Plattling
+LOC Plau am See
+LOC Plaue
+LOC Plauen
+LOC Plettenberg
+LOC Pleystein
+LOC Plochingen
+LOC Plön
+LOC Pockau-Lengefeld
+LOC Pocking
+LOC Pohlheim
+LOC Polch
+LOC Porta Westfalica
+LOC Pößneck
+LOC Potsdam
+LOC Pottenstein
+LOC Preetz
+LOC Premnitz
+LOC Prenzlau
+LOC Pressath
+LOC Preußisch Oldendorf
+LOC Prichsenstadt
+LOC Pritzwalk
+LOC Prüm
+LOC Puchheim
+LOC Pulheim
+LOC Pulsnitz
+LOC Putbus
+LOC Putlitz
+LOC Püttlingen
+LOC Quakenbrück
+LOC Quedlinburg
+LOC Querfurt
+LOC Quickborn
+LOC Rabenau
+LOC Radeberg
+LOC Radebeul
+LOC Radeburg
+LOC Radevormwald
+LOC Radolfzell am Bodensee
+LOC Raguhn-Jeßnitz
+LOC Rahden
+LOC Rain
+LOC Ramstein-Miesenbach
+LOC Ranis
+LOC Ransbach-Baumbach
+LOC Rastatt
+LOC Rastenberg
+LOC Rathenow
+LOC Ratingen
+LOC Ratzeburg
+LOC Rauenberg
+LOC Raunheim
+LOC Rauschenberg
+LOC Ravensburg
+LOC Ravenstein
+LOC Recklinghausen
+LOC Rees
+LOC Regen
+LOC Regensburg
+LOC Regis-Breitingen
+LOC Rehau
+LOC Rehburg-Loccum
+LOC Rehna
+LOC Reichelsheim
+LOC Reichenbach im Vogtland
+LOC Reichenbach/O.L.
+LOC Reinbek
+LOC Reinfeld
+LOC Reinheim
+LOC Remagen
+LOC Remda-Teichel
+LOC Remscheid
+LOC Remseck am Neckar
+LOC Renchen
+LOC Rendsburg
+LOC Rennerod
+LOC Renningen
+LOC Rerik
+LOC Rethem
+LOC Reutlingen
+LOC Rheda-Wiedenbrück
+LOC Rhede
+LOC Rheinau
+LOC Rheinbach
+LOC Rheinberg
+LOC Rheinböllen
+LOC Rheine
+LOC Rheinfelden
+LOC Rheinsberg
+LOC Rheinstetten
+LOC Rhens
+LOC Rhinow
+LOC Ribnitz-Damgarten
+LOC Richtenberg
+LOC Riedenburg
+LOC Riedlingen
+LOC Riedstadt
+LOC Rieneck
+LOC Riesa
+LOC Rietberg
+LOC Rinteln
+LOC Röbel/Müritz
+LOC Rochlitz
+LOC Rockenhausen
+LOC Rodalben
+LOC Rodenberg
+LOC Rödental
+LOC Rödermark
+LOC Rodewisch
+LOC Rodgau
+LOC Roding
+LOC Römhild
+LOC Romrod
+LOC Ronneburg
+LOC Ronnenberg
+LOC Rosbach vor der Höhe
+LOC Rosenfeld
+LOC Rosenheim
+LOC Rosenthal
+LOC Rösrath
+LOC Roßleben
+LOC Roßwein
+LOC Rostock, Hansestadt
+LOC Rotenburg an der Fulda
+LOC Rotenburg
+LOC Roth
+LOC Rötha
+LOC Röthenbach an der Pegnitz
+LOC Rothenburg/O.L.
+LOC Rothenburg ob der Tauber
+LOC Rothenfels
+LOC Rottenburg am Neckar
+LOC Rottenburg a.d.Laaber
+LOC Röttingen
+LOC Rottweil
+LOC Rötz
+LOC Rüdesheim am Rhein
+LOC Rudolstadt
+LOC Ruhla
+LOC Ruhland
+LOC Runkel
+LOC Rüsselsheim
+LOC Rutesheim
+LOC Rüthen
+LOC Saalburg-Ebersdorf
+LOC Saalfeld/Saale
+LOC Saarbrücken
+LOC Saarburg
+LOC Saarlouis
+LOC Sachsenhagen
+LOC Sachsenheim
+LOC Salzgitter
+LOC Salzkotten
+LOC Salzwedel, Hansestadt
+LOC Sandau
+LOC Sandersdorf-Brehna
+LOC Sangerhausen
+LOC Sankt Augustin
+LOC Sankt Goar
+LOC Sankt Goarshausen
+LOC Sarstedt
+LOC Sassenberg
+LOC Sassnitz
+LOC Sayda
+LOC Schalkau
+LOC Schauenstein
+LOC Scheer
+LOC Scheibenberg
+LOC Scheinfeld
+LOC Schelklingen
+LOC Schenefeld
+LOC Scheßlitz
+LOC Schieder-Schwalenberg
+LOC Schifferstadt
+LOC Schillingsfürst
+LOC Schiltach
+LOC Schirgiswalde-Kirschau
+LOC Schkeuditz
+LOC Schkölen
+LOC Schleiden
+LOC Schleiz
+LOC Schleswig
+LOC Schlettau
+LOC Schleusingen
+LOC Schlieben
+LOC Schlitz
+LOC Schloß Holte-Stukenbrock
+LOC Schlotheim
+LOC Schlüchtern
+LOC Schlüsselfeld
+LOC Schmalkalden
+LOC Schmallenberg
+LOC Schmölln
+LOC Schnackenburg
+LOC Schnaittenbach
+LOC Schneeberg
+LOC Schneverdingen
+LOC Schömberg
+LOC Schönau
+LOC Schönau im Schwarzwald
+LOC Schönberg
+LOC Schönebeck
+LOC Schöneck/Vogtl.
+LOC Schönewalde
+LOC Schongau
+LOC Schöningen
+LOC Schönsee
+LOC Schönwald
+LOC Schopfheim
+LOC Schöppenstedt
+LOC Schorndorf
+LOC Schortens
+LOC Schotten
+LOC Schramberg
+LOC Schraplau
+LOC Schriesheim
+LOC Schrobenhausen
+LOC Schrozberg
+LOC Schüttorf
+LOC Schwaan
+LOC Schwabach
+LOC Schwäbisch Gmünd
+LOC Schwäbisch Hall
+LOC Schwabmünchen
+LOC Schwaigern
+LOC Schwalbach am Taunus
+LOC Schwalmstadt
+LOC Schwandorf
+LOC Schwanebeck
+LOC Schwarzenbach am Wald
+LOC Schwarzenbach an der Saale
+LOC Schwarzenbek
+LOC Schwarzenberg/Erzgeb.
+LOC Schwarzenborn
+LOC Schwarzheide
+LOC Schwedt/Oder
+LOC Schweich
+LOC Schweinfurt
+LOC Schwelm
+LOC Schwentinental
+LOC Schwerin
+LOC Schwerte
+LOC Schwetzingen
+LOC Sebnitz
+LOC Seehausen
+LOC Seeland
+LOC Seelow
+LOC Seelze
+LOC Seesen
+LOC Sehnde
+LOC Seifhennersdorf
+LOC Selb
+LOC Selbitz
+LOC Seligenstadt
+LOC Selm
+LOC Selters
+LOC Senden
+LOC Sendenhorst
+LOC Senftenberg
+LOC Seßlach
+LOC Siegburg
+LOC Siegen
+LOC Sigmaringen
+LOC Simbach am Inn
+LOC Simmern/Hunsrück
+LOC Sindelfingen
+LOC Singen
+LOC Sinsheim
+LOC Sinzig
+LOC Soest
+LOC Solingen
+LOC Solms
+LOC Soltau
+LOC Sömmerda
+LOC Sondershausen
+LOC Sonneberg
+LOC Sonnewalde
+LOC Sonthofen
+LOC Sontra
+LOC Spaichingen
+LOC Spalt
+LOC Spangenberg
+LOC Speicher
+LOC Spenge
+LOC Speyer
+LOC Spremberg
+LOC Springe
+LOC Sprockhövel
+LOC Stade
+LOC Stadtallendorf
+LOC Stadtbergen
+LOC Stadthagen
+LOC Stadtilm
+LOC Stadtlengsfeld
+LOC Stadtlohn
+LOC Stadtoldendorf
+LOC Stadtprozelten
+LOC Stadtroda
+LOC Stadtsteinach
+LOC Stadt Wehlen
+LOC Starnberg
+LOC Staßfurt
+LOC Staufen im Breisgau
+LOC Staufenberg
+LOC Stavenhagen
+LOC St. Blasien
+LOC Stein
+LOC Steinach
+LOC Steinau an der Straße
+LOC Steinbach-Hallenberg
+LOC Steinbach
+LOC Steinfurt
+LOC Steinheim an der Murr
+LOC Steinheim
+LOC Stendal
+LOC Sternberg
+LOC St. Ingbert
+LOC St. Georgen im Schwarzwald
+LOC Stockach
+LOC Stolberg
+LOC Stollberg/Erzgeb.
+LOC Stolpen
+LOC Storkow
+LOC Stößen
+LOC Straelen
+LOC Stralsund, Hansestadt
+LOC Strasburg
+LOC Straubing
+LOC Strausberg
+LOC Strehla
+LOC Stromberg
+LOC Stühlingen
+LOC Stutensee
+LOC Stuttgart
+LOC St. Wendel
+LOC Suhl
+LOC Sulingen
+LOC Sulz am Neckar
+LOC Sulzbach/Saar
+LOC Sulzbach-Rosenberg
+LOC Sulzburg
+LOC Sundern
+LOC Südliches Anhalt
+LOC Süßen
+LOC Syke
+LOC Tambach-Dietharz
+LOC Tangerhütte
+LOC Tangermünde
+LOC Tann
+LOC Tanna
+LOC Tauberbischofsheim
+LOC Taucha
+LOC Taunusstein
+LOC Tecklenburg
+LOC Tegernsee
+LOC Telgte
+LOC Teltow
+LOC Templin
+LOC Tengen
+LOC Tessin
+LOC Teterow
+LOC Tettnang
+LOC Teublitz
+LOC Teuchern
+LOC Teupitz
+LOC Teuschnitz
+LOC Thale
+LOC Thalheim/Erzgeb.
+LOC Thannhausen
+LOC Tharandt
+LOC Themar
+LOC Thum
+LOC Tirschenreuth
+LOC Titisee-Neustadt
+LOC Tittmoning
+LOC Todtnau
+LOC Töging am Inn
+LOC Tönisvorst
+LOC Tönning
+LOC Torgau
+LOC Torgelow
+LOC Tornesch
+LOC Traben-Trarbach
+LOC Traunreut
+LOC Traunstein
+LOC Trebbin
+LOC Trebsen/Mulde
+LOC Treffurt
+LOC Trendelburg
+LOC Treuchtlingen
+LOC Treuen
+LOC Treuenbrietzen
+LOC Triberg im Schwarzwald
+LOC Tribsees
+LOC Trier
+LOC Triptis
+LOC Trochtelfingen
+LOC Troisdorf
+LOC Trossingen
+LOC Trostberg
+LOC Tübingen
+LOC Tuttlingen
+LOC Twistringen
+LOC Übach-Palenberg
+LOC Überlingen
+LOC Uebigau-Wahrenbrück
+LOC Ueckermünde
+LOC Uelzen
+LOC Uetersen
+LOC Uffenheim
+LOC Uhingen
+LOC Ulm
+LOC Ulmen
+LOC Ulrichstein
+LOC Ummerstadt
+LOC Unkel
+LOC Unna
+LOC Unterschleißheim
+LOC Usedom
+LOC Usingen
+LOC Uslar
+LOC Vacha
+LOC Vaihingen an der Enz
+LOC Vallendar
+LOC Varel
+LOC Vechta
+LOC Velbert
+LOC Velburg
+LOC Velden
+LOC Vellberg
+LOC Velen
+LOC Vellmar
+LOC Velten
+LOC Verden
+LOC Veringenstadt
+LOC Verl
+LOC Versmold
+LOC Vetschau/Spreewald
+LOC Viechtach
+LOC Viernheim
+LOC Viersen
+LOC Villingen-Schwenningen
+LOC Vilsbiburg
+LOC Vilseck
+LOC Vilshofen an der Donau
+LOC Visselhövede
+LOC Vlotho
+LOC Voerde
+LOC Vogtsburg im Kaiserstuhl
+LOC Vohburg an der Donau
+LOC Vohenstrauß
+LOC Vöhrenbach
+LOC Vöhringen
+LOC Volkach
+LOC Völklingen
+LOC Volkmarsen
+LOC Vreden
+LOC Wachenheim an der Weinstraße
+LOC Wächtersbach
+LOC Wadern
+LOC Waghäusel
+LOC Wahlstedt
+LOC Waiblingen
+LOC Waibstadt
+LOC Waischenfeld
+LOC Waldbröl
+LOC Waldeck
+LOC Waldenbuch
+LOC Waldenburg
+LOC Waldenburg
+LOC Waldershof
+LOC Waldheim
+LOC Waldkappel
+LOC Waldkirch
+LOC Waldkirchen
+LOC Waldkraiburg
+LOC Waldmünchen
+LOC Waldsassen
+LOC Waldshut-Tiengen
+LOC Walldorf
+LOC Walldürn
+LOC Wallenfels
+LOC Walsrode
+LOC Waltershausen
+LOC Waltrop
+LOC Wanfried
+LOC Wangen im Allgäu
+LOC Wanzleben-Börde
+LOC Warburg
+LOC Waren
+LOC Warendorf
+LOC Warin
+LOC Warstein
+LOC Wassenberg
+LOC Wasserburg am Inn
+LOC Wassertrüdingen
+LOC Wasungen
+LOC Wedel
+LOC Weener
+LOC Wegberg
+LOC Wegeleben
+LOC Wehr
+LOC Weida
+LOC Weiden in der Oberpfalz
+LOC Weikersheim
+LOC Weil am Rhein
+LOC Weilburg
+LOC Weil der Stadt
+LOC Weilheim an der Teck
+LOC Weilheim in Oberbayern
+LOC Weimar
+LOC Weingarten
+LOC Weinheim
+LOC Weinsberg
+LOC Weinstadt
+LOC Weismain
+LOC Weißenberg
+LOC Weißenburg in Bayern
+LOC Weißenfels
+LOC Weißenhorn
+LOC Weißensee
+LOC Weißenstadt
+LOC Weißenthurm
+LOC Weißwasser/O.L.
+LOC Weiterstadt
+LOC Welzheim
+LOC Welzow
+LOC Wemding
+LOC Wendlingen am Neckar
+LOC Werben
+LOC Werdau
+LOC Werder
+LOC Werdohl
+LOC Werl
+LOC Wermelskirchen
+LOC Wernau
+LOC Werne
+LOC Werneuchen
+LOC Wernigerode
+LOC Wertheim
+LOC Werther (Westf.)
+LOC Wertingen
+LOC Wesel
+LOC Wesenberg
+LOC Wesselburen
+LOC Wesseling
+LOC Westerburg
+LOC Westerstede
+LOC Wetter
+LOC Wetter
+LOC Wettin-Löbejün
+LOC Wetzlar
+LOC Widdern
+LOC Wiehe
+LOC Wiehl
+LOC Wiesbaden
+LOC Wiesmoor
+LOC Wiesensteig
+LOC Wiesloch
+LOC Wildau
+LOC Wildberg
+LOC Wildenfels
+LOC Wildeshausen
+LOC Wilhelmshaven
+LOC Wilkau-Haßlau
+LOC Willebadessen
+LOC Willich
+LOC Wilsdruff
+LOC Wilster
+LOC Wilthen
+LOC Windischeschenbach
+LOC Windsbach
+LOC Winnenden
+LOC Winsen
+LOC Winterberg
+LOC Wipperfürth
+LOC Wirges
+LOC Wismar, Hansestadt
+LOC Wissen
+LOC Witten
+LOC Wittenberg
+LOC Wittenberge
+LOC Wittenburg
+LOC Wittichenau
+LOC Wittlich
+LOC Wittingen
+LOC Wittmund
+LOC Wittstock/Dosse
+LOC Witzenhausen
+LOC Woldegk
+LOC Wolfach
+LOC Wolfenbüttel
+LOC Wolfhagen
+LOC Wolframs-Eschenbach
+LOC Wolfratshausen
+LOC Wolfsburg
+LOC Wolfstein
+LOC Wolgast
+LOC Wolkenstein
+LOC Wolmirstedt
+LOC Worms
+LOC Wörrstadt
+LOC Wörth am Rhein
+LOC Wörth an der Donau
+LOC Wörth am Main
+LOC Wriezen
+LOC Wülfrath
+LOC Wunsiedel
+LOC Wunstorf
+LOC Wuppertal
+LOC Würselen
+LOC Wurzbach
+LOC Würzburg
+LOC Wurzen
+LOC Wustrow
+LOC Wyk auf Föhr
+LOC Xanten
+LOC Zahna-Elster
+LOC Zarrentin am Schaalsee
+LOC Zehdenick
+LOC Zeil am Main
+LOC Zeitz
+LOC Zell am Harmersbach
+LOC Zell im Wiesental
+LOC Zell  
+LOC Solingen
