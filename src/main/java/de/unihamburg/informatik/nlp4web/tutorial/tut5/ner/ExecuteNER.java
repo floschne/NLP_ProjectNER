@@ -21,6 +21,7 @@ import org.cleartk.util.cr.FilesCollectionReader;
 import de.tudarmstadt.ukp.dkpro.core.snowball.SnowballStemmer;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.annotator.NERAnnotator;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.reader.NERReader;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.writer.NERWriter;
 
 public class ExecuteNER {
 
@@ -46,11 +47,6 @@ public class ExecuteNER {
 		org.cleartk.ml.jar.Train.main(modelDirectory);
 	}
 
-	// TODO
-	// The pipeline does not include the output writer. you SHOULD write a consumer
-	// which extract the predicted Named entities. You can compute then the scores
-	// accordingly
-
 	public static void classifyTestFile(String modelDirectory, File testPosFile, String language)
 			throws ResourceInitializationException, UIMAException, IOException {
 		
@@ -63,17 +59,14 @@ public class ExecuteNER {
 													NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
 													"src/main/resources/feature/features.xml",
 													GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
+		AnalysisEngine nerWriter = createEngine(NERWriter.class);
 		
 		runPipeline(
 				testPosFileReader,
 				nerReader,
 				snowballStemmer,
-				nerAnnotator/*
-							 * , TODO: Replace this with your NER consumer
-							 * createEngine(AnalyzeFeatures.class, AnalyzeFeatures.PARAM_INPUT_FILE,
-							 * testPosFile.getAbsolutePath(),
-							 * AnalyzeFeatures.PARAM_TOKEN_VALUE_PATH, "pos/PosValue")
-							 */);
+				nerAnnotator,
+				nerWriter);
 	}
 
 	public static void main(String[] args) throws Exception {
