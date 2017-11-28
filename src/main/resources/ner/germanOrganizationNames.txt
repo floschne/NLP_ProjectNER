@@ -1,59 +1,59 @@
-Deutsche Postbank
-Klöckner & Co
-Freenet AG
-Tognum
-Rheinmetall
-Allianz SE
-Volkswagen AG
-E.ON
-Daimler AG
-Siemens AG
-Deutsche Bank
-BMW
-BASF
-Deutsche Telekom
-RWE
-Munich Re
-Bayer AG
-Deutsche Post AG
-Metro AG
-ThyssenKrupp
-Commerzbank
-SAP
-Linde AG
-EnBW
-Henkel Group
-Continental AG
-Deutsche Lufthansa
-Fresenius SE & Co. KGaA
-MAN
-Merck KGaA
-Hannover Rück
-adidas
-Deutsche Börse
-Hochtief
-HeidelbergCement
-Landesbank Berlin
-Wüstenrot & Württembergische
-K+S
-Beiersdorf AG
-Infineon
-Porsche
-TUI
-Bilfinger Berger
-Celesio
-Nürnberger Beteiligungs-AG
-Aurubis
-Südzucker
-ProSiebenSat.1 Media
-Fraport
-Salzgitter AG
-Wacker Chemie
-Aareal Bank
-IKB Deutsche Industriebank
-Brenntag
-Lanxess
-DVB Bank
-BayWa
-GEA Group
-Axel Springer AG
+ORG Deutsche Postbank
+ORG Klöckner & Co
+ORG Freenet AG
+ORG Tognum
+ORG Rheinmetall
+ORG Allianz SE
+ORG Volkswagen AG
+ORG E.ON
+ORG Daimler AG
+ORG Siemens AG
+ORG Deutsche Bank
+ORG BMW
+ORG BASF
+ORG Deutsche Telekom
+ORG RWE
+ORG Munich Re
+ORG Bayer AG
+ORG Deutsche Post AG
+ORG Metro AG
+ORG ThyssenKrupp
+ORG Commerzbank
+ORG SAP
+ORG Linde AG
+ORG EnBW
+ORG Henkel Group
+ORG Continental AG
+ORG Deutsche Lufthansa
+ORG Fresenius SE & Co. KGaA
+ORG MAN
+ORG Merck KGaA
+ORG Hannover Rück
+ORG adidas
+ORG Deutsche Börse
+ORG Hochtief
+ORG HeidelbergCement
+ORG Landesbank Berlin
+ORG Wüstenrot & Württembergische
+ORG K+S
+ORG Beiersdorf AG
+ORG Infineon
+ORG Porsche
+ORG TUI
+ORG Bilfinger Berger
+ORG Celesio
+ORG Nürnberger Beteiligungs-AG
+ORG Aurubis
+ORG Südzucker
+ORG ProSiebenSat.1 Media
+ORG Fraport
+ORG Salzgitter AG
+ORG Wacker Chemie
+ORG Aareal Bank
+ORG IKB Deutsche Industriebank
+ORG Brenntag
+ORG Lanxess
+ORG DVB Bank
+ORG BayWa
+ORG GEA Group
+ORG Axel Springer AG
