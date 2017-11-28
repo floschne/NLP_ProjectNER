@@ -25,8 +25,14 @@ import de.unihamburg.informatik.nlp4web.tutorial.tut5.writer.NERWriter;
 
 public class ExecuteNER {
 
-	public static void writeModel(File posTagFile, String modelDirectory, String language)
-			throws ResourceInitializationException, UIMAException, IOException {
+    /**
+     * @param posTagFile
+     * @param modelDirectory
+     * @param language
+     * @throws UIMAException
+     * @throws IOException
+     */
+    public static void writeModel(File posTagFile, String modelDirectory, String language) throws UIMAException, IOException {
 
         CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
                 posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
