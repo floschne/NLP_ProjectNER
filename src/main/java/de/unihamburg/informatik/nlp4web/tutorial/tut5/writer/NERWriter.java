@@ -2,12 +2,9 @@ package de.unihamburg.informatik.nlp4web.tutorial.tut5.writer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasConsumer_ImplBase;
@@ -23,6 +20,7 @@ import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
 public class NERWriter extends JCasConsumer_ImplBase {
 	private static final String LS = System.lineSeparator();
 	private static final int EXPECTED_ENTITY_TYPE_NUM = 9;
+	private static final String NULL_TYPE = "O";
 
 	/**
 	 * Helper class to be used in a HashMap.
@@ -65,7 +63,7 @@ public class NERWriter extends JCasConsumer_ImplBase {
 		Map<Pair<String, String>, Integer> classifications = new HashMap<>();
 		// Stores the log
 		StringBuilder s = new StringBuilder();
-		s.append("-- NER Annotations --");
+		s.append("-- NER Annotations --" + LS);
 		s.append(LS);
 		Iterator<NEIOBAnnotation> it = JCasUtil.select(aJCas, NEIOBAnnotation.class).iterator();
 		while (it.hasNext()) {
@@ -101,16 +99,26 @@ public class NERWriter extends JCasConsumer_ImplBase {
 				classifications.put(key, classifications.get(key) + 1);
 			else
 				classifications.put(key, 1);
-			// TODO Compute aggregate statistics
 			// Append information onto log
-			s.append("Gold: " + goldType + "\t");
-			s.append("Predicted: " + predType + "\t");
+			s.append("Gold:\t" + goldType + "\t");
+			s.append("Pred.:\t" + predType + "\t");
 			s.append("(" + pred.getBegin() + ", " + pred.getEnd() + ") ");
 			s.append(pred.getCoveredText() + " ");
 			s.append(LS);
 		}
 		s.append(LS);
+		getContext().getLogger().log(Level.INFO, s.toString());
+		// Compute statistics
+		int truePositives = 0;
+		int falsePositives = 0;
+		int trueNegatives = 0;
+		int falseNegatives = 0;
+		int correct = 0;
+		int all = 0;
 		// Append statistics onto log
+		s = new StringBuilder();
+		s.append("-- Statistics --" + LS);
+		s.append(LS);
 		s.append("Classifications (correct classes on the left, predictions on top):" + LS);
 		s.append("\t");
 		for (String predType : entityTypes)
@@ -120,11 +128,41 @@ public class NERWriter extends JCasConsumer_ImplBase {
 			s.append(goldType + "\t");
 			for (String predType : entityTypes) {
 				Pair<String, String> key = new Pair<>(goldType, predType);
-				s.append((classifications.containsKey(key) ? classifications.get(key) : 0) + "\t");
+				int num = classifications.containsKey(key) ? classifications.get(key) : 0;
+				s.append(num + "\t");
+				if (goldType.equals(NULL_TYPE))
+					if (predType.equals(NULL_TYPE)) {
+						trueNegatives += num;
+						correct += num;
+					}
+					else
+						falsePositives += num;
+				else
+					if (predType.equals(NULL_TYPE))
+						falseNegatives += num;
+					else {
+						truePositives += num;
+						if (goldType.equals(predType))
+							correct += num;
+					}
+				all += num;
 			}
 			s.append(LS);
 		}
-		// TODO Append aggregate statistics onto log
+		s.append(LS);
+		// Append aggregate statistics onto log
+		s.append("Correct classifications:" + LS);
+		s.append("  " + correct + "/" + all + " (" + (((double) correct * 100) / all) + "%)" + LS);
+		s.append(LS);
+		s.append("Aggregate classification results (correct on the left, predictions on top):" + LS);
+		s.append("\tNE\tO" + LS);
+		s.append("NE\t" + truePositives + "\t" + falseNegatives + LS);
+		s.append("O\t" + falsePositives + "\t" + trueNegatives + LS);
+		s.append(LS);
+		int correctNEs = correct - trueNegatives;
+		int NEs = all - trueNegatives - falsePositives;
+		s.append("Correct classifications for tokens that are named entities:" + LS);
+		s.append("  " + correctNEs + "/" + NEs + " (" + (((double) correctNEs * 100) / NEs) + "%)" + LS);
 		s.append(LS);
 		getContext().getLogger().log(Level.INFO, s.toString());
 	}
