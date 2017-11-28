@@ -5,11 +5,14 @@ import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.NamedFeatureExtractor1;
+import org.cleartk.ml.feature.function.FeatureFunction;
+import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -22,27 +25,33 @@ import java.util.Map;
  * - first word in the each line has to be the NE Feature Tag Name
  * - after NE Feature Tag Name, separated by the delimiterSymbol, there follows a sequence of words representing the NE
  */
-public class NEListExtractor implements NamedFeatureExtractor1<Token> {
+public class NEListExtractor implements FeatureFunction {
 
-    private final Map<String, String> neToTag = new HashMap<>();
+    private final String neListName;
+    private final String delimiterSymbol = " ";
     private final String featureName;
-    private String delimiterSymbol = " ";
+    private Map<String, String> ne2tag;
 
-    public NEListExtractor(File nerListFile, String name) throws IOException {
-        if (name == null || name.isEmpty())
-            throw new IllegalArgumentException("Provide a valid, non-empty name for the NE feature!");
-        this.featureName = name;
+    public NEListExtractor(String neListName, String featureName) throws IOException {
+        if (neListName == null || neListName.isEmpty() || !new File(neListName).exists())
+            throw new IllegalArgumentException("Provide a valid, non-empty path to the list of NE features");
+        this.neListName = neListName;
 
-        generateNeToTagMap(nerListFile);
+        if (featureName == null || featureName.isEmpty())
+            throw new IllegalArgumentException("Please provide a valid name for the NE feature!");
+        this.featureName = featureName;
+
+        this.ne2tag = null;
     }
 
     /**
      * Generates the map from NE to their corresponding tag.
-     * @param nerListFile the file that contains the list of NE and their tags
+     *
      * @throws IOException if file not found or error while readings
      */
-    private void generateNeToTagMap(File nerListFile) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(nerListFile))) {
+    private void generateNeToTagMap() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.neListName))) {
+            this.ne2tag = new HashMap<>();
             String line;
             StringBuilder sb = new StringBuilder();
             // read line by line
@@ -52,7 +61,9 @@ public class NEListExtractor implements NamedFeatureExtractor1<Token> {
                 for (int i = 1; i < split.length; ++i)
                     sb.append(split[i]).append(" ");
                 // add the NE and the NE tag to the map
-                neToTag.put(sb.toString().trim(), split[0]);
+                this.ne2tag.put(sb.toString().trim(), split[0]);
+                //reset sb
+                sb.setLength(0);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,20 +72,25 @@ public class NEListExtractor implements NamedFeatureExtractor1<Token> {
     }
 
     @Override
-    public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-        String coveredText = focusAnnotation.getCoveredText();
-        String tag = neToTag.get(coveredText);
-        return tag == null ? Collections.emptyList() : Collections.singletonList(new Feature(this.featureName + "_" + tag));
+    public List<Feature> apply(Feature feature) {
+        if (feature == null || feature.getValue() == null)
+            throw new IllegalArgumentException("Feature must not be null and has to have an non-empty value!");
+        try {
+            if (this.ne2tag == null)
+                this.generateNeToTagMap();
+            String featureValue = feature.getValue().toString();
+            return ne2tag.containsKey(featureValue) ? Collections.singletonList(new Feature("NameEntity<"+neListName+">", this.featureName)) : Collections.emptyList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    @Override
-    public String getFeatureName() {
-        return this.featureName + "_ListFeature";
-    }
-
+    /*
     public void setDelimiterSymbol(String delimiterSymbol) {
-        if(delimiterSymbol == null || delimiterSymbol.isEmpty() || delimiterSymbol.length() > 1)
+        if (delimiterSymbol == null || delimiterSymbol.isEmpty() || delimiterSymbol.length() > 1)
             throw new IllegalArgumentException("Delimiter Symbol must contain exactly one character!");
         this.delimiterSymbol = delimiterSymbol;
     }
+    */
 }

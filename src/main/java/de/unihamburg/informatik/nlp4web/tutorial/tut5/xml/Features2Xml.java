@@ -1,52 +1,115 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.xml;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.thoughtworks.xstream.XStream;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor;
+import org.apache.uima.UIMAFramework;
+import org.apache.uima.util.Level;
 import org.cleartk.ml.feature.extractor.CleartkExtractor;
 import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.extractor.TypePathExtractor;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Following;
-import org.cleartk.ml.feature.extractor.CleartkExtractor.Preceding;
-import org.cleartk.ml.feature.function.CapitalTypeFeatureFunction;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction;
-import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
-import org.cleartk.ml.feature.function.LowerCaseFeatureFunction;
-import org.cleartk.ml.feature.function.NumericTypeFeatureFunction;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction.Orientation;
+import org.cleartk.ml.feature.function.*;
 
-import com.thoughtworks.xstream.XStream;
-
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Features2Xml {
-	public static void generateFeatureExtractors(String filename) throws FileNotFoundException{
+	public static void generateTokenFeatureExtractors(String filename) throws IOException {
 
-	    List<FeatureExtractor1<Token>> tokenFeatureExtractors;
-        tokenFeatureExtractors = new ArrayList<FeatureExtractor1<Token>>();
+	    List<FeatureExtractor1<Token>> featureExtractors  = new ArrayList<>();
 
-        CharacterNgramFeatureFunction.Orientation fromRight = Orientation.RIGHT_TO_LEFT;
+        TypePathExtractor<Token> stemExtractor = new TypePathExtractor<>(Token.class, "stem/value");
 
-        TypePathExtractor<Token> stemExtractor = new TypePathExtractor<Token>(Token.class, "stem/value");
+        // create a function feature extractor that creates features corresponding to the token
+        // Note the difference between feature extractors and feature functions here. Feature extractors take an Annotation
+        // from the JCas and extract features from it. Feature functions take the features produced by the feature extractor
+        // and generate new features from the old ones. Since feature functions don’t need to look up information in the JCas,
+        // they may be more efficient than feature extractors. So, the e.g. the CharacterNgramFeatureFunction simply extract
+        // suffixes from the text returned by the CoveredTextExtractor.
+        FeatureExtractor1<Token> tokenFeatureExtractor = new FeatureFunctionExtractor<>(
+                // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
+                new CoveredTextExtractor<Token>(),
+                // feature function that produces the lower cased word (based on the output of the CoveredTextExtractor)
+                new LowerCaseFeatureFunction(),
+                // feature function that produces the capitalization type of the word (e.g. all uppercase, all lowercase...)
+                new CapitalTypeFeatureFunction(),
+                // feature function that produces the numeric type of the word (numeric, alphanumeric...)
+                new NumericTypeFeatureFunction(),
+                // feature function that produces the suffix of the word as character bigram (last two chars of the word)
+                new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 2),
+                // feature function that produces the suffix of the word as character trigram (last three chars of the word)
+                new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 3));
 
-        FeatureExtractor1<Token> tokenFeatureExtractor = new FeatureFunctionExtractor<Token>(
-                new CoveredTextExtractor<Token>(), new LowerCaseFeatureFunction(),
-                new CapitalTypeFeatureFunction(), new NumericTypeFeatureFunction(),
-                new CharacterNgramFeatureFunction(fromRight, 0, 2));
+        // create a feature extractor that extracts the surrounding token texts (within the same sentence)
+        CleartkExtractor<Token, Token> contextFeatureExtractor = new CleartkExtractor<>(Token.class,
+                // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
+                new CoveredTextExtractor<>(),
+                // also include the two preceding words
+                new CleartkExtractor.Preceding(2),
+                // and the two following words
+                new CleartkExtractor.Following(2));
 
-        CleartkExtractor<Token, Token> contextFeatureExtractor = new CleartkExtractor<Token, Token>(Token.class,
-                new CoveredTextExtractor<Token>(), new Preceding(2), new Following(2));
-        tokenFeatureExtractors.add(stemExtractor);
-        tokenFeatureExtractors.add(tokenFeatureExtractor);
-        tokenFeatureExtractors.add(contextFeatureExtractor);
+        // create the custom feature extractors
+        try {
+            FeatureExtractor1<Token> personNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/fullNames.txt", "PER"));
+
+            FeatureExtractor1<Token> foreNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/foreNames.txt", "PER"));
+
+            FeatureExtractor1<Token> surNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/surNames.txt", "PER"));
+
+            FeatureExtractor1<Token> germanCityNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "LOC"));
+
+            FeatureExtractor1<Token> germanCountryNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "LOC"));
+
+            FeatureExtractor1<Token> englishCountryNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "LOC"));
+
+            FeatureExtractor1<Token> germanOrganizationNames = new FeatureFunctionExtractor<>(
+                    new CoveredTextExtractor<Token>(),
+                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
+                    new NEListExtractor("src/main/resources/ner/germanOrganizationNames.txt", "LOC"));
+
+            featureExtractors.add(personNames);
+            featureExtractors.add(surNames);
+            featureExtractors.add(foreNames);
+            featureExtractors.add(germanCityNames);
+            featureExtractors.add(germanCountryNames);
+            featureExtractors.add(englishCountryNames);
+            featureExtractors.add(germanOrganizationNames);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+
+        // add all the extractors to the list of feature extractors that'll be serialized in the XML
+        featureExtractors.add(stemExtractor);
+        featureExtractors.add(tokenFeatureExtractor);
+        featureExtractors.add(contextFeatureExtractor);
         
-		//here begins your task to add more feature extractors!!!
 
 		XStream xstream = XStreamFactory.createXStream();
-		String x = xstream.toXML(tokenFeatureExtractors);
+		String x = xstream.toXML(featureExtractors);
 		x = removeLogger(x);
 		PrintStream ps = new PrintStream(filename);
 		ps.println(x);
@@ -80,8 +143,10 @@ public class Features2Xml {
 		return buffer.toString();
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
-		String featureFileName="src/main/resources/feature/features.xml";
-		generateFeatureExtractors(featureFileName);
-	}
+	public static void main(String[] args) throws IOException {
+        UIMAFramework.getLogger().log(Level.INFO, "Writing features.xml file!");
+        String featureFileName="src/main/resources/feature/features.xml";
+        generateTokenFeatureExtractors(featureFileName);
+        UIMAFramework.getLogger().log(Level.INFO, "Done: " + featureFileName);
+    }
 }

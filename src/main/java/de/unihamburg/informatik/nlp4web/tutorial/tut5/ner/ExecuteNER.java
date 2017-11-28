@@ -30,7 +30,7 @@ public class ExecuteNER {
      * @throws UIMAException
      * @throws IOException
      */
-    public static void writeModel(File posTagFile, String modelDirectory, String language) throws UIMAException, IOException {
+    public static void  writeModel(File posTagFile, String modelDirectory, String language) throws UIMAException, IOException {
 
         CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
                 posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
@@ -100,15 +100,22 @@ public class ExecuteNER {
     public static void main(String[] args) throws Exception {
 
         long start = System.currentTimeMillis();
+        long now = 0;
         String modelDirectory = "src/test/resources/model/";
         String language = "en";
         File nerTrain = new File("src/main/resources/ner/ner_eng.train");
         File nerTest = new File("src/main/resources/ner/ner_eng.dev");
         new File(modelDirectory).mkdirs();
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'writing model' Time: " + (now - start) + "ms");
         writeModel(nerTrain, modelDirectory, language);
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'training model' Time: " + (now - start) + "ms");
         trainModel(modelDirectory);
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'classifying model' Time: " + (now - start) + "ms");
         classifyTestFile(modelDirectory, nerTest, language);
-        long now = System.currentTimeMillis();
-        UIMAFramework.getLogger().log(Level.INFO, "Time: " + (now - start) + "ms");
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "All done! Time: " + (now - start) + "ms");
     }
 }

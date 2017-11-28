@@ -72,7 +72,9 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
                     // feature function that produces the suffix of the word as character bigram (last two chars of the word)
                     new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 2),
                     // feature function that produces the suffix of the word as character trigram (last three chars of the word)
-                    new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 3));
+                    new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 3),
+                    // feature function that produces the Character Category Pattern (based on the Unicode Categories) for the Token
+                    new CharacterCategoryPatternFunction());
 
             // create a feature extractor that extracts the surrounding token texts (within the same sentence)
             CleartkExtractor<Token, Token> contextFeatureExtractor = new CleartkExtractor<>(Token.class,
@@ -86,28 +88,41 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
 
             // create the custom feature extractors
             try {
-                FeatureFunctionExtractor personName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/fullNames.txt"), "personName"));
-                FeatureFunctionExtractor surName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/foreNames.txt"), "foreName"));
-                FeatureFunctionExtractor foreName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/surNames.txt"), "surName"));
-                FeatureFunctionExtractor germanCityName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/germanCityNames.txt"), "cityName"));
-                FeatureFunctionExtractor germanCountryName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/germanCountryNames.txt"), "cityName"));
-                FeatureFunctionExtractor englishCountryName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/englishCountryNames.txt"), "countryName"));
-                FeatureFunctionExtractor organizationName = new FeatureFunctionExtractor<>(
-                        new NEListExtractor(new File("src/main/resources/ner/germanOrganizationNames.txt"), "organizationName"));
+                FeatureFunctionExtractor personNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/fullNames.txt", "PER"));
 
-                featureExtractors.add(personName);
-                featureExtractors.add(surName);
-                featureExtractors.add(foreName);
-                featureExtractors.add(germanCityName);
-                featureExtractors.add(germanCountryName);
-                featureExtractors.add(englishCountryName);
-                featureExtractors.add(organizationName);
+                FeatureFunctionExtractor foreNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/foreNames.txt", "PER"));
+
+                FeatureFunctionExtractor surNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/surNames.txt", "PER"));
+
+                FeatureFunctionExtractor germanCityNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "LOC"));
+
+                FeatureFunctionExtractor germanCountryNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "LOC"));
+
+                FeatureFunctionExtractor englishCountryNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "LOC"));
+
+                FeatureFunctionExtractor germanOrganizationNames = new FeatureFunctionExtractor<>(
+                        new CoveredTextExtractor<Token>(),
+                        new NEListExtractor("src/main/resources/ner/germanOrganizationNames.txt", "ORG"));
+
+                featureExtractors.add(personNames);
+                featureExtractors.add(surNames);
+                featureExtractors.add(foreNames);
+                featureExtractors.add(germanCityNames);
+                featureExtractors.add(germanCountryNames);
+                featureExtractors.add(englishCountryNames);
+                featureExtractors.add(germanOrganizationNames);
             } catch (IOException e) {
                 e.printStackTrace();
             }
