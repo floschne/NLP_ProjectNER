@@ -1,4 +1,81 @@
 <list>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/fullNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>PER</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/surNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>PER</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/foreNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>PER</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/germanCityNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/germanCountryNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/englishCountryNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/germanOrganizationNames.txt</neListName>
+        <delimiterSymbol> </delimiterSymbol>
+        <featureName>LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
   <TypePathExtractor>
     <featureName>TypePath(StemValue)</featureName>
     <focusClass>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</focusClass>
@@ -21,6 +98,14 @@
         <minimumValueLength>2</minimumValueLength>
         <lowerCase>false</lowerCase>
         <name>NGram_Right_0_2_2</name>
+      </org.cleartk.ml.feature.function.CharacterNgramFeatureFunction>
+      <org.cleartk.ml.feature.function.CharacterNgramFeatureFunction>
+        <orientation>RIGHT_TO_LEFT</orientation>
+        <start>0</start>
+        <end>3</end>
+        <minimumValueLength>3</minimumValueLength>
+        <lowerCase>false</lowerCase>
+        <name>NGram_Right_0_3_3</name>
       </org.cleartk.ml.feature.function.CharacterNgramFeatureFunction>
     </featureFunctions>
     <baseFeatures>INCLUDE</baseFeatures>
