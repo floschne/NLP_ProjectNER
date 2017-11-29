@@ -7,24 +7,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Feature extractor that extracts NE features from a textual list of NE features and their corresponding NE-Tag
- * Constraints on the lists:
- * - must contain textual content only
- * - first word in the each line has to be the NE Feature Tag Name
- * - after NE Feature Tag Name, separated by the delimiterSymbol, there follows a sequence of words representing the NE
+ * Feature extractor that extracts NE features from a textual list of NE features
  */
 public class NEListExtractor implements FeatureFunction {
 
     private final String neListName;
-    private final String delimiterSymbol = " ";
     private final String featureName;
-    private Map<String, String> ne2tag;
+    private Set<String> namedEntities;
 
     public NEListExtractor(String neListName, String featureName) throws IOException {
         if (neListName == null || neListName.isEmpty() || !new File(neListName).exists())
@@ -35,7 +27,7 @@ public class NEListExtractor implements FeatureFunction {
             throw new IllegalArgumentException("Please provide a valid name for the NE feature!");
         this.featureName = featureName;
 
-        this.ne2tag = null;
+        this.namedEntities = null;
     }
 
     /**
@@ -45,20 +37,10 @@ public class NEListExtractor implements FeatureFunction {
      */
     private void generateNeToTagMap() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.neListName))) {
-            this.ne2tag = new HashMap<>();
-            String line;
-            StringBuilder sb = new StringBuilder();
-            // read line by line
-            while ((line = reader.readLine()) != null) {
-                String[] split = line.split(delimiterSymbol);
-                // since a name can contain more than two space-separated strings, the splitted strings are combined again
-                for (int i = 1; i < split.length; ++i)
-                    sb.append(split[i]).append(" ");
-                // add the NE and the NE tag to the map
-                this.ne2tag.put(sb.toString().trim(), split[0]);
-                //reset sb
-                sb.setLength(0);
-            }
+            this.namedEntities = new HashSet<>();
+            String neToken = null;
+            while ((neToken = reader.readLine()) != null)
+                this.namedEntities.add(neToken.toLowerCase());
         } catch (IOException e) {
             e.printStackTrace();
             throw e;
@@ -70,21 +52,13 @@ public class NEListExtractor implements FeatureFunction {
         if (feature == null || feature.getValue() == null)
             throw new IllegalArgumentException("Feature must not be null and has to have an non-empty value!");
         try {
-            if (this.ne2tag == null)
+            if (this.namedEntities == null)
                 this.generateNeToTagMap();
-            String featureValue = feature.getValue().toString();
-            return ne2tag.containsKey(featureValue) ? Collections.singletonList(new Feature("NameEntityList<" + neListName + ">", this.featureName)) : Collections.emptyList();
+            String featureValue = feature.getValue().toString().toLowerCase();
+            return namedEntities.contains(featureValue) ? Collections.singletonList(new Feature("NamedEntityList<" + neListName + ">", this.featureName)) : Collections.emptyList();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    /*
-    public void setDelimiterSymbol(String delimiterSymbol) {
-        if (delimiterSymbol == null || delimiterSymbol.isEmpty() || delimiterSymbol.length() > 1)
-            throw new IllegalArgumentException("Delimiter Symbol must contain exactly one character!");
-        this.delimiterSymbol = delimiterSymbol;
-    }
-    */
 }

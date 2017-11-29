@@ -77,7 +77,6 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
         FeatureExtractor1<Token> tokenFeatureExtractor = new FeatureFunctionExtractor<>(
                 // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
                 new CoveredTextExtractor<Token>(),
-                FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
                 // feature function that produces the lower cased word (based on the output of the CoveredTextExtractor)
                 new LowerCaseFeatureFunction(),
                 // feature function that produces the capitalization type of the word (e.g. all uppercase, all lowercase...)
@@ -103,48 +102,16 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
 
         // create the custom feature extractors
         try {
-            FeatureFunctionExtractor personNames = new FeatureFunctionExtractor<>(
+            FeatureFunctionExtractor listExtractors = new FeatureFunctionExtractor<>(
                     new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/fullNames.txt", "PER"));
+                    new NEListExtractor("src/main/resources/ner/firstNames.txt", "firstName_PER"),
+                    new NEListExtractor("src/main/resources/ner/lastNames.txt", "lastName_PER"),
+                    new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "gerCity_LOC"),
+                    new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "gerCountry_LOC"),
+                    new NEListExtractor("src/main/resources/ner/englishCityNames.txt", "engCity_LOC"),
+                    new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "engCountry_LOC"));
 
-            FeatureFunctionExtractor foreNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/foreNames.txt", "PER"));
-
-            FeatureFunctionExtractor surNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/surNames.txt", "PER"));
-
-            FeatureFunctionExtractor germanCityNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "LOC"));
-
-            FeatureFunctionExtractor germanCountryNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "LOC"));
-
-            FeatureFunctionExtractor englishCountryNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "LOC"));
-
-            FeatureFunctionExtractor germanOrganizationNames = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
-                    new NEListExtractor("src/main/resources/ner/germanOrganizationNames.txt", "ORG"));
-
-            featureExtractors.add(personNames);
-            featureExtractors.add(surNames);
-            featureExtractors.add(foreNames);
-            featureExtractors.add(germanCityNames);
-            featureExtractors.add(germanCountryNames);
-            featureExtractors.add(englishCountryNames);
-            featureExtractors.add(germanOrganizationNames);
+            featureExtractors.add(listExtractors);
         } catch (IOException e) {
             e.printStackTrace();
         }
