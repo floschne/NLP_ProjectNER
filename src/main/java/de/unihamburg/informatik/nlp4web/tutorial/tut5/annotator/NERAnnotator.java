@@ -102,6 +102,7 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
 
         // create the custom feature extractors
         try {
+            FeatureFunction[] functions;
             FeatureFunctionExtractor listExtractors = new FeatureFunctionExtractor<>(
                     new CoveredTextExtractor<Token>(),
                     new NEListExtractor("src/main/resources/ner/firstNames.txt", "firstName_PER"),
@@ -109,7 +110,12 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
                     new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "gerCity_LOC"),
                     new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "gerCountry_LOC"),
                     new NEListExtractor("src/main/resources/ner/englishCityNames.txt", "engCity_LOC"),
-                    new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "engCountry_LOC"));
+                    new NEListExtractor("src/main/resources/ner/eng_MISC.txt", "eng_MISC"),
+                    new NEListExtractor("src/main/resources/ner/eng_ORG.txt", "eng_ORG"),
+                    new NEListExtractor("src/main/resources/ner/eng_LOC.txt", "eng_LOC"),
+                    new NEListExtractor("src/main/resources/ner/deu_MISC.txt", "deu_MISC"),
+                    new NEListExtractor("src/main/resources/ner/deu_ORG.txt", "deu_ORG"),
+                    new NEListExtractor("src/main/resources/ner/deu_LOC.txt", "deu_LOC"));
 
             featureExtractors.add(listExtractors);
         } catch (IOException e) {
