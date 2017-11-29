@@ -1,18 +1,12 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.feature;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import org.apache.uima.jcas.JCas;
 import org.cleartk.ml.Feature;
-import org.cleartk.ml.feature.extractor.CleartkExtractorException;
-import org.cleartk.ml.feature.extractor.NamedFeatureExtractor1;
 import org.cleartk.ml.feature.function.FeatureFunction;
-import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +73,7 @@ public class NEListExtractor implements FeatureFunction {
             if (this.ne2tag == null)
                 this.generateNeToTagMap();
             String featureValue = feature.getValue().toString();
-            return ne2tag.containsKey(featureValue) ? Collections.singletonList(new Feature("NameEntity<"+neListName+">", this.featureName)) : Collections.emptyList();
+            return ne2tag.containsKey(featureValue) ? Collections.singletonList(new Feature("NameEntityList<" + neListName + ">", this.featureName)) : Collections.emptyList();
         } catch (IOException e) {
             e.printStackTrace();
         }
