@@ -25,23 +25,33 @@ import de.unihamburg.informatik.nlp4web.tutorial.tut5.writer.NERWriter;
 
 public class ExecuteNER {
 
-	public static void writeModel(File posTagFile, String modelDirectory, String language)
-			throws ResourceInitializationException, UIMAException, IOException {
+    /**
+     * @param posTagFile
+     * @param modelDirectory
+     * @param language
+     * @throws UIMAException
+     * @throws IOException
+     */
+    public static void writeModel(File posTagFile, String modelDirectory, String language) throws UIMAException, IOException {
 
-		CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
-				posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
-		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
-		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class, NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
-				"src/main/resources/feature/features.xml", NERAnnotator.PARAM_IS_TRAINING, true,
-				DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, modelDirectory,
-				DefaultDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME, CrfSuiteStringOutcomeDataWriter.class);
+        CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
+                posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
 
-		runPipeline(
-				posTagFileReader,
-				createEngine(NERReader.class),
-				snowballStemmer, nerAnnotator
-				);
-	}
+        AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
+
+        AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class,
+                NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE, "src/main/resources/feature/features.xml",
+                NERAnnotator.PARAM_IS_TRAINING, true,
+                DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, modelDirectory,
+                DefaultDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME, CrfSuiteStringOutcomeDataWriter.class);
+
+        runPipeline(
+                posTagFileReader,
+                createEngine(NERReader.class),
+                snowballStemmer,
+                nerAnnotator
+        );
+    }
 
 	public static void trainModel(String modelDirectory) throws Exception {
 		org.cleartk.ml.jar.Train.main(modelDirectory);
@@ -49,13 +59,14 @@ public class ExecuteNER {
 
 	public static void classifyTestFile(String modelDirectory, File testPosFile, String language)
 			throws ResourceInitializationException, UIMAException, IOException {
-		
+
 		CollectionReader testPosFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(testPosFile.getAbsolutePath(),
 				NERReader.CONLL_VIEW, testPosFile.getName());
-	
+
 		AnalysisEngine nerReader = createEngine(NERReader.class);
 		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
 		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class,
+
 				NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE, "src/main/resources/feature/features.xml",
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
 		AnalysisEngine nerWriter = createEngine(NERWriter.class,
@@ -71,18 +82,25 @@ public class ExecuteNER {
 				nerWriter);
 	}
 
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-		long start = System.currentTimeMillis();
-		String modelDirectory = "src/test/resources/model/";
-		String language = "en";
-		File nerTrain = new File("src/main/resources/ner/ner_eng.train");
-		File nerTest = new File("src/main/resources/ner/ner_eng.dev");
-		new File(modelDirectory).mkdirs();
-		writeModel(nerTrain, modelDirectory, language);
-		trainModel(modelDirectory);
-		classifyTestFile(modelDirectory, nerTest, language);
-		long now = System.currentTimeMillis();
-		UIMAFramework.getLogger().log(Level.INFO, "Time: " + (now - start) + "ms");
-	}
+        long start = System.currentTimeMillis();
+        long now = 0;
+        String modelDirectory = "src/test/resources/model/";
+        String language = "en";
+        File nerTrain = new File("src/main/resources/ner/ner_eng.train");
+        File nerTest = new File("src/main/resources/ner/ner_eng.dev");
+        new File(modelDirectory).mkdirs();
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'writing model' Time: " + (now - start) + "ms");
+        writeModel(nerTrain, modelDirectory, language);
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'training model' Time: " + (now - start) + "ms");
+        trainModel(modelDirectory);
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "Starting 'classifying model' Time: " + (now - start) + "ms");
+        classifyTestFile(modelDirectory, nerTest, language);
+        now = System.currentTimeMillis();
+        UIMAFramework.getLogger().log(Level.INFO, "All done! Time: " + (now - start) + "ms");
+    }
 }

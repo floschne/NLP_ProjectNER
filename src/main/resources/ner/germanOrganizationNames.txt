@@ -1,0 +1,59 @@
+ORG Deutsche Postbank
+ORG Klöckner & Co
+ORG Freenet AG
+ORG Tognum
+ORG Rheinmetall
+ORG Allianz SE
+ORG Volkswagen AG
+ORG E.ON
+ORG Daimler AG
+ORG Siemens AG
+ORG Deutsche Bank
+ORG BMW
+ORG BASF
+ORG Deutsche Telekom
+ORG RWE
+ORG Munich Re
+ORG Bayer AG
+ORG Deutsche Post AG
+ORG Metro AG
+ORG ThyssenKrupp
+ORG Commerzbank
+ORG SAP
+ORG Linde AG
+ORG EnBW
+ORG Henkel Group
+ORG Continental AG
+ORG Deutsche Lufthansa
+ORG Fresenius SE & Co. KGaA
+ORG MAN
+ORG Merck KGaA
+ORG Hannover Rück
+ORG adidas
+ORG Deutsche Börse
+ORG Hochtief
+ORG HeidelbergCement
+ORG Landesbank Berlin
+ORG Wüstenrot & Württembergische
+ORG K+S
+ORG Beiersdorf AG
+ORG Infineon
+ORG Porsche
+ORG TUI
+ORG Bilfinger Berger
+ORG Celesio
+ORG Nürnberger Beteiligungs-AG
+ORG Aurubis
+ORG Südzucker
+ORG ProSiebenSat.1 Media
+ORG Fraport
+ORG Salzgitter AG
+ORG Wacker Chemie
+ORG Aareal Bank
+ORG IKB Deutsche Industriebank
+ORG Brenntag
+ORG Lanxess
+ORG DVB Bank
+ORG BayWa
+ORG GEA Group
+ORG Axel Springer AG

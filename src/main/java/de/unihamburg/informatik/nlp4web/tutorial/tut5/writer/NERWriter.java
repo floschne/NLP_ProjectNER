@@ -1,11 +1,6 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.writer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasConsumer_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -13,7 +8,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
 import org.uimafit.util.JCasUtil;
 
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
+import java.util.*;
 
 /**
  * Consumer to output gold/prediction pairs and to calculate statistics as performance measurements.

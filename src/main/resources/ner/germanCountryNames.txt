@@ -1,0 +1,214 @@
+LOC Europäische Union
+LOC Afrikanische Union
+LOC Organisation Amerikanischer Staaten
+LOC Pazifisches Inselforum
+LOC Abchasien
+LOC Afghanistan
+LOC Ägypten
+LOC Albanien
+LOC Algerien
+LOC Andorra
+LOC Angola
+LOC Antigua und Barbuda
+LOC Äquatorialguinea
+LOC Argentinien
+LOC Armenien
+LOC Aserbaidschan
+LOC Äthiopien
+LOC Australien
+LOC Bahamas
+LOC Bahrain
+LOC Bangladesch
+LOC Barbados
+LOC Belgien
+LOC Belize
+LOC Benin
+LOC Bergkarabach
+LOC Bhutan
+LOC Bolivien
+LOC Bosnien und Herzegowina
+LOC Botswana
+LOC Brasilien
+LOC Brunei
+LOC Bulgarien
+LOC Burkina Faso
+LOC Burundi
+LOC Chile
+LOC China
+LOC Republik China
+LOC Volksrepublik China
+LOC Hongkong
+LOC Macau
+LOC Cookinseln
+LOC Costa Rica
+LOC Dänemark
+LOC Deutschland
+LOC Dominica
+LOC Dominikanische Republik
+LOC Dschibuti
+LOC Ecuador
+LOC El Salvador
+LOC Elfenbeinküste
+LOC Eritrea
+LOC Estland
+LOC Fidschi
+LOC Finnland
+LOC Frankreich
+LOC Gabun
+LOC Gambia
+LOC Georgien
+LOC Ghana
+LOC Grenada
+LOC Griechenland
+LOC Guatemala
+LOC Guinea
+LOC Guinea-Bissau
+LOC Guyana
+LOC Haiti
+LOC Honduras
+LOC Indien
+LOC Indonesien
+LOC Irak
+LOC Iran
+LOC IrlandIsland
+LOC Israel
+LOC Italien
+LOC Jamaika
+LOC Japan
+LOC Jemen
+LOC Jordanien
+LOC Kambodscha
+LOC Kamerun
+LOC Kanada
+LOC Kap Verde
+LOC Kasachstan
+LOC Katar
+LOC Kenia
+LOC Kirgisistan
+LOC Kiribati
+LOC Kolumbien
+LOC Komoren
+LOC Kongo
+LOC Nord Korea
+LOC Süd Korea
+LOC Kosovo
+LOC KroatienKuba
+LOC Kuwait
+LOC Laos
+LOC Lesotho
+LOC Lettland
+LOC Libanon
+LOC Liberia
+LOC Libyen
+LOC Liechtenstein
+LOC Litauen
+LOC Luxemburg
+LOC Madagaskar
+LOC Malawi
+LOC Malaysia
+LOC Malediven
+LOC Mali
+LOC Malta
+LOC Marokko
+LOC Marshallinseln
+LOC Mauretanien
+LOC Mauritius
+LOC Mazedonien
+LOC Mexiko
+LOC Mikronesien
+LOC Moldawien
+LOC Monaco
+LOC Mongolei
+LOC Montenegro
+LOC Mosambik
+LOC Myanmar
+LOC Namibia
+LOC Nauru
+LOC Nepal
+LOC Neuseeland
+LOC Nicaragua
+LOC Niederlande
+LOC Curaçao
+LOC Sint Maarten
+LOC Niger
+LOC Nigeria
+LOC Niue
+LOC Nordzypern
+LOC Norwegen
+LOC Oman
+LOC Österreich
+LOC Osttimor 
+LOC Timor-Leste
+LOC Pakistan
+LOC Kaschmir
+LOC PalästinaPalau
+LOC Panama
+LOC Papua-Neuguinea
+LOC ParaguayPeru
+LOC Philippinen
+LOC Polen
+LOC Portugal
+LOC Ruanda
+LOC Rumänien
+LOC Russland
+LOC Salomonen
+LOC Sambia
+LOC Samoa
+LOC San Marino
+LOC São Tomé und Príncipe
+LOC Saudi-Arabien
+LOC Schweden
+LOC SchweizSenegal
+LOC Serbien
+LOC Kosovo
+LOC Seychellen
+LOC Sierra Leone
+LOC Simbabwe
+LOC Singapur
+LOC Slowakei
+LOC Slowenien
+LOC Somalia
+LOC Somaliland
+LOC Somaliland
+LOC Spanien
+LOC Sri Lanka
+LOC St. Kitts und Nevis
+LOC St. Lucia
+LOC St. Vincent und die Grenadinen
+LOC SüdafrikaSudan
+LOC Südossetien
+LOC Südsudan
+LOC Suriname
+LOC Swasiland
+LOC Syrien
+LOC Tadschikistan
+LOC Tansania
+LOC Thailand
+LOC Togo
+LOC Tonga
+LOC Transnistrien
+LOC Trinidad und Tobago
+LOC Tschad
+LOC Tschechien
+LOC Tunesien
+LOC Türkei
+LOC Turkmenistan
+LOC Tuvalu
+LOC Uganda
+LOC Ukraine
+LOC Krim
+LOC Ungarn
+LOC Uruguay
+LOC Usbekistan
+LOC Vanuatu
+LOC Vatikanstadt
+LOC Venezuela
+LOC Vereinigte Arabische Emirate
+LOC Vereinigte Staaten
+LOC Vereinigtes Königreich
+LOC Vietnam
+LOC Weißrussland
+LOC Westsahara
+LOC Zentralafrikanische Republik
+LOC Zypern
+LOC Nordzypern
