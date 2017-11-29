@@ -62,8 +62,10 @@ public class ExecuteNER {
 													NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
 													"src/main/resources/feature/features.xml",
 													GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
-		AnalysisEngine nerWriter = createEngine(NERWriter.class);
-
+		AnalysisEngine nerWriter = createEngine(NERWriter.class,
+		NERWriter.PARAM_NULL_TYPE, "O",
+				NERWriter.PARAM_EXPECTED_ENTITY_TYPE_NUM, 9,
+				NERWriter.PARAM_VERBOSE, true);
 		runPipeline(
 				testPosFileReader,
 				nerReader,

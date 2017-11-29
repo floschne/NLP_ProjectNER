@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasConsumer_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
 import org.uimafit.util.JCasUtil;
@@ -19,9 +20,29 @@ import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
  */
 public class NERWriter extends JCasConsumer_ImplBase {
 	private static final String LS = System.lineSeparator();
-	private static final int EXPECTED_ENTITY_TYPE_NUM = 9;
-	private static final String NULL_TYPE = "O";
-
+	
+	/**
+	 * String used to identify a non-named entity
+	 */
+	public static final String PARAM_NULL_TYPE = "Null type";
+	
+	/**
+	 * Expected number of entity types
+	 */
+	public static final String PARAM_EXPECTED_ENTITY_TYPE_NUM = "Expected entity type num";
+	
+	/**
+	 * Set for verbose output
+	 */
+	public static final String PARAM_VERBOSE = "Verbose";
+	
+	@ConfigurationParameter(name = PARAM_NULL_TYPE, mandatory = true)
+	private String nullType = null;
+	@ConfigurationParameter(name = PARAM_EXPECTED_ENTITY_TYPE_NUM, mandatory = false)
+	private int expectedEntityTypeNum = 9;
+	@ConfigurationParameter(name = PARAM_VERBOSE, mandatory = false)
+	private boolean verbose = false;
+	
 	/**
 	 * Helper class to be used in a HashMap.
 	 * @param <A> the first element of the pair
@@ -58,12 +79,12 @@ public class NERWriter extends JCasConsumer_ImplBase {
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		// Lists all seen entity types
-		List<String> entityTypes = new ArrayList<>(EXPECTED_ENTITY_TYPE_NUM);
+		List<String> entityTypes = new ArrayList<>(expectedEntityTypeNum);
 		// Maps pairs of gold/prediction entity types to the number of their joint appearance 
 		Map<Pair<String, String>, Integer> classifications = new HashMap<>();
 		// Stores the log
 		StringBuilder s = new StringBuilder();
-		s.append("-- NER Annotations --" + LS);
+		s.append("-- Wrong NER Annotations --" + LS);
 		s.append(LS);
 		Iterator<NEIOBAnnotation> it = JCasUtil.select(aJCas, NEIOBAnnotation.class).iterator();
 		while (it.hasNext()) {
@@ -100,14 +121,17 @@ public class NERWriter extends JCasConsumer_ImplBase {
 			else
 				classifications.put(key, 1);
 			// Append information onto log
-			s.append("Gold:\t" + goldType + "\t");
-			s.append("Pred.:\t" + predType + "\t");
-			s.append("(" + pred.getBegin() + ", " + pred.getEnd() + ") ");
-			s.append(pred.getCoveredText() + " ");
-			s.append(LS);
+			if (!goldType.equals(predType)) {
+				s.append("Gold:\t" + goldType + "\t");
+				s.append("Pred.:\t" + predType + "\t");
+				s.append("(" + pred.getBegin() + ", " + pred.getEnd() + ") ");
+				s.append(pred.getCoveredText() + " ");
+				s.append(LS);
+			}
 		}
 		s.append(LS);
-		getContext().getLogger().log(Level.INFO, s.toString());
+		if (verbose)
+			getContext().getLogger().log(Level.INFO, s.toString());
 		// Compute statistics
 		int truePositives = 0;
 		int falsePositives = 0;
@@ -130,15 +154,15 @@ public class NERWriter extends JCasConsumer_ImplBase {
 				Pair<String, String> key = new Pair<>(goldType, predType);
 				int num = classifications.containsKey(key) ? classifications.get(key) : 0;
 				s.append(num + "\t");
-				if (goldType.equals(NULL_TYPE))
-					if (predType.equals(NULL_TYPE)) {
+				if (goldType.equals(nullType))
+					if (predType.equals(nullType)) {
 						trueNegatives += num;
 						correct += num;
 					}
 					else
 						falsePositives += num;
 				else
-					if (predType.equals(NULL_TYPE))
+					if (predType.equals(nullType))
 						falseNegatives += num;
 					else {
 						truePositives += num;
