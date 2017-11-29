@@ -66,14 +66,14 @@ public class ExecuteNER {
 		AnalysisEngine nerReader = createEngine(NERReader.class);
 		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
 		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class,
-													NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
-													"src/main/resources/feature/features.xml",
-													GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
+
+				NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE, "src/main/resources/feature/features.xml",
+				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
 		AnalysisEngine nerWriter = createEngine(NERWriter.class,
-		NERWriter.PARAM_NULL_TYPE, "O",
+				NERWriter.PARAM_NULL_TYPE, "O",
 				NERWriter.PARAM_EXPECTED_ENTITY_TYPE_NUM, 9,
 				NERWriter.PARAM_VERBOSE, true);
-
+		
 		runPipeline(
 				testPosFileReader,
 				nerReader,
