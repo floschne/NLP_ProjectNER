@@ -1,6 +1,5 @@
 #ignore generated models
-**/model/crfsuite.model
-**/model/model.jar
+model/
 
 # ignore generated evaluation files
 **/evaluation/eval.txt
