@@ -63,7 +63,7 @@ public class Features2Xml {
         return buffer.toString();
     }
 
-    private static void generateFeatureAblationTestFiles() throws IOException {
+    private static void generateFeatureAblationTestFiles(Integer minUsedExtractors) throws IOException {
 
         //create all feature extractors
         List<FeatureExtractor1<Token>> allFeatureExtractors = FeatureExtractorFactory.createAllFeatureExtractors();
@@ -71,7 +71,7 @@ public class Features2Xml {
         //compute all possible combinations of the feature extractors
         int numOfCombinations = 0;
         List<Combinations> combinations = new ArrayList<>();
-        for (int i = 1; i <= allFeatureExtractors.size(); ++i) {
+        for (int i = minUsedExtractors; i <= allFeatureExtractors.size(); ++i) {
             Combinations combination = new Combinations(allFeatureExtractors.size(), i);
             combinations.add(combination);
             numOfCombinations += CombinatoricsUtils.binomialCoefficient(combination.getN(), combination.getK());
@@ -101,8 +101,8 @@ public class Features2Xml {
                     featureExtractorCombination.add(allFeatureExtractors.get(i));
                     //append the extractors name to the file name (better readability)
                     fileName.append(extractorNames.get(i)).append(",");
+                    //remove last "," in file name
                 }
-                //remove last "," in file name
                 fileName.setLength(fileName.length() - 1);
                 fileName.append(".xml");
                 writeXML(fileName.toString(), featureExtractorCombination);
@@ -114,11 +114,11 @@ public class Features2Xml {
     }
 
     public static void main(String[] args) throws IOException {
-        UIMAFramework.getLogger().log(Level.INFO, "Writing " + OUTPUT_DIRECTORY + "features.xml file!");
-        String featureFileName = OUTPUT_DIRECTORY + "features.xml";
+        UIMAFramework.getLogger().log(Level.INFO, "Writing " + OUTPUT_DIRECTORY + "features_ALL.xml file!");
+        String featureFileName = OUTPUT_DIRECTORY + "features_ALL.xml";
         generateTokenFeatureExtractors(featureFileName);
         UIMAFramework.getLogger().log(Level.INFO, "Done: " + featureFileName);
 
-        generateFeatureAblationTestFiles();
+        generateFeatureAblationTestFiles(8);
     }
 }
