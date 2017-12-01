@@ -1,34 +1,4 @@
 <list>
-  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
-    <extractor class="CoveredTextExtractor"/>
-    <featureFunctions>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/firstNames.txt</neListName>
-        <featureName>firstName_PER</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/lastNames.txt</neListName>
-        <featureName>lastName_PER</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/germanCityNames.txt</neListName>
-        <featureName>gerCity_LOC</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/germanCountryNames.txt</neListName>
-        <featureName>gerCountry_LOC</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/englishCityNames.txt</neListName>
-        <featureName>engCity_LOC</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-        <neListName>src/main/resources/ner/englishCountryNames.txt</neListName>
-        <featureName>engCountry_LOC</featureName>
-      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
-    </featureFunctions>
-    <baseFeatures>INCLUDE</baseFeatures>
-  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
   <TypePathExtractor>
     <featureName>TypePath(StemValue)</featureName>
     <focusClass>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</focusClass>
@@ -65,7 +35,7 @@
         <name>CharPattern</name>
       </org.cleartk.ml.feature.function.CharacterCategoryPatternFunction>
     </featureFunctions>
-    <baseFeatures>EXCLUDE</baseFeatures>
+    <baseFeatures>INCLUDE</baseFeatures>
   </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
   <CleartkExtractor>
     <annotationClass>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</annotationClass>
@@ -83,5 +53,89 @@
       </Following>
     </contexts>
   </CleartkExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/firstNames.txt</neListName>
+        <featureName>firstName_PER</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/lastNames.txt</neListName>
+        <featureName>lastName_PER</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/germanCityNames.txt</neListName>
+        <featureName>gerCity_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/englishCityNames.txt</neListName>
+        <featureName>engCity_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/germanCountryNames.txt</neListName>
+        <featureName>gerCountry_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/englishCountryNames.txt</neListName>
+        <featureName>engCountry_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/eng_MISC.txt</neListName>
+        <featureName>eng_MISC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/deu_MISC.txt</neListName>
+        <featureName>deu_MISC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/eng_ORG.txt</neListName>
+        <featureName>eng_ORG</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/deu_ORG.txt</neListName>
+        <featureName>deu_ORG</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+  <org.cleartk.ml.feature.function.FeatureFunctionExtractor>
+    <extractor class="CoveredTextExtractor"/>
+    <featureFunctions>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/eng_LOC.txt</neListName>
+        <featureName>eng_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+      <de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+        <neListName>src/main/resources/ner/deu_LOC.txt</neListName>
+        <featureName>deu_LOC</featureName>
+      </de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor>
+    </featureFunctions>
+    <baseFeatures>EXCLUDE</baseFeatures>
+  </org.cleartk.ml.feature.function.FeatureFunctionExtractor>
 </list>
 

@@ -3,6 +3,7 @@ package de.unihamburg.informatik.nlp4web.tutorial.tut5.annotator;
 import com.thoughtworks.xstream.XStream;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.FeatureExtractorFactory;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.feature.NEListExtractor;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
 import de.unihamburg.informatik.nlp4web.tutorial.tut5.xml.XStreamFactory;
@@ -48,86 +49,17 @@ public class NERAnnotator extends CleartkSequenceAnnotator<String> {
         super.initialize(context);
         // instantiate and add feature extractors
         if (featureExtractionFile == null) {
-            featureExtractors = createFeatureExtractors();
+            try {
+                featureExtractors = FeatureExtractorFactory.createAllFeatureExtractors();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             // load the settings from a file
             // initialize the XStream if a xml file is given:
             XStream xstream = XStreamFactory.createXStream();
             featureExtractors = (List<FeatureExtractor1<Token>>) xstream.fromXML(new File(featureExtractionFile));
         }
-    }
-
-    /**
-     * Creates all the features extractors that will be used. To remove code redundancy the method is public static and
-     * therefore accessible in the Features2Xml class
-     *
-     * @return the list of feature extractors
-     */
-    public static List<FeatureExtractor1<Token>> createFeatureExtractors() {
-        List<FeatureExtractor1<Token>> featureExtractors = new ArrayList<>();
-
-        TypePathExtractor<Token> stemExtractor = new TypePathExtractor<>(Token.class, "stem/value");
-
-        // create a function feature extractor that creates features corresponding to the token
-        // Note the difference between feature extractors and feature functions here. Feature extractors take an Annotation
-        // from the JCas and extract features from it. Feature functions take the features produced by the feature extractor
-        // and generate new features from the old ones. Since feature functions don’t need to look up information in the JCas,
-        // they may be more efficient than feature extractors. So, the e.g. the CharacterNgramFeatureFunction simply extract
-        // suffixes from the text returned by the CoveredTextExtractor.
-        FeatureExtractor1<Token> tokenFeatureExtractor = new FeatureFunctionExtractor<>(
-                // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
-                new CoveredTextExtractor<Token>(),
-                // feature function that produces the lower cased word (based on the output of the CoveredTextExtractor)
-                new LowerCaseFeatureFunction(),
-                // feature function that produces the capitalization type of the word (e.g. all uppercase, all lowercase...)
-                new CapitalTypeFeatureFunction(),
-                // feature function that produces the numeric type of the word (numeric, alphanumeric...)
-                new NumericTypeFeatureFunction(),
-                // feature function that produces the suffix of the word as character bigram (last two chars of the word)
-                new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 2),
-                // feature function that produces the suffix of the word as character trigram (last three chars of the word)
-                new CharacterNgramFeatureFunction(CharacterNgramFeatureFunction.Orientation.RIGHT_TO_LEFT, 0, 3),
-                // feature function that produces the Character Category Pattern (based on the Unicode Categories) for the Token
-                new CharacterCategoryPatternFunction());
-
-        // create a feature extractor that extracts the surrounding token texts (within the same sentence)
-        CleartkExtractor<Token, Token> contextFeatureExtractor = new CleartkExtractor<>(Token.class,
-                // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
-                new CoveredTextExtractor<>(),
-                // also include the two preceding words
-                new CleartkExtractor.Preceding(2),
-                // and the two following words
-                new CleartkExtractor.Following(2));
-
-
-        // create the custom feature extractors
-        try {
-            FeatureFunction[] functions;
-            FeatureFunctionExtractor listExtractors = new FeatureFunctionExtractor<>(
-                    new CoveredTextExtractor<Token>(),
-                    new NEListExtractor("src/main/resources/ner/firstNames.txt", "firstName_PER"),
-                    new NEListExtractor("src/main/resources/ner/lastNames.txt", "lastName_PER"),
-                    new NEListExtractor("src/main/resources/ner/germanCityNames.txt", "gerCity_LOC"),
-                    new NEListExtractor("src/main/resources/ner/germanCountryNames.txt", "gerCountry_LOC"),
-                    new NEListExtractor("src/main/resources/ner/englishCityNames.txt", "engCity_LOC"),
-                    new NEListExtractor("src/main/resources/ner/eng_MISC.txt", "eng_MISC"),
-                    new NEListExtractor("src/main/resources/ner/eng_ORG.txt", "eng_ORG"),
-                    new NEListExtractor("src/main/resources/ner/eng_LOC.txt", "eng_LOC"),
-                    new NEListExtractor("src/main/resources/ner/deu_MISC.txt", "deu_MISC"),
-                    new NEListExtractor("src/main/resources/ner/deu_ORG.txt", "deu_ORG"),
-                    new NEListExtractor("src/main/resources/ner/deu_LOC.txt", "deu_LOC"));
-
-            featureExtractors.add(listExtractors);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // add all the extractors to the list of feature extractors that'll be used in the process method
-        featureExtractors.add(stemExtractor);
-        featureExtractors.add(tokenFeatureExtractor);
-        featureExtractors.add(contextFeatureExtractor);
-
-        return featureExtractors;
     }
 
     @SuppressWarnings("unchecked")
