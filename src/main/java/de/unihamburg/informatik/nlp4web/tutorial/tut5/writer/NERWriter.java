@@ -1,6 +1,15 @@
 package de.unihamburg.informatik.nlp4web.tutorial.tut5.writer;
 
-import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasConsumer_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -8,7 +17,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
 import org.uimafit.util.JCasUtil;
 
-import java.util.*;
+import de.unihamburg.informatik.nlp4web.tutorial.tut5.type.NEIOBAnnotation;
 
 /**
  * Consumer to output gold/prediction pairs and to calculate statistics as performance measurements.
@@ -27,7 +36,13 @@ public class NERWriter extends JCasConsumer_ImplBase {
 	public static final String PARAM_EXPECTED_ENTITY_TYPE_NUM = "Expected entity type num";
 	
 	/**
-	 * Set for verbose output
+	 * File to write the output for evaluation to
+	 */
+	public static final String PARAM_FILENAME = "Filename";
+	
+	/**
+	 * Set for verbose output.
+	 * When true is set for this parameter, all incorrect classifications are shown.
 	 */
 	public static final String PARAM_VERBOSE = "Verbose";
 	
@@ -35,8 +50,11 @@ public class NERWriter extends JCasConsumer_ImplBase {
 	private String nullType = null;
 	@ConfigurationParameter(name = PARAM_EXPECTED_ENTITY_TYPE_NUM, mandatory = false)
 	private int expectedEntityTypeNum = 9;
+	@ConfigurationParameter(name = PARAM_FILENAME, mandatory = true)
+	private String filename = null;
 	@ConfigurationParameter(name = PARAM_VERBOSE, mandatory = false)
 	private boolean verbose = false;
+	private final String FS = " ";
 	
 	/**
 	 * Helper class to be used in a HashMap.
@@ -81,48 +99,57 @@ public class NERWriter extends JCasConsumer_ImplBase {
 		StringBuilder s = new StringBuilder();
 		s.append("-- Wrong NER Annotations --" + LS);
 		s.append(LS);
-		Iterator<NEIOBAnnotation> it = JCasUtil.select(aJCas, NEIOBAnnotation.class).iterator();
-		while (it.hasNext()) {
-			/* When classifying, NERReader and NERAnnotator create NEIOBAnnotations independently.
-			 * One is used to store the gold value, the other one to store the predicted value.
-			 * This setup assures that classification can also be done when not in a test situation.
-			 * Here, both pieces of information are combined. */
-			NEIOBAnnotation pred = it.next();
-			if (pred.getPredictValue() == null)
-				continue; // Only consider predicted values
-			NEIOBAnnotation gold = null;
-			for (NEIOBAnnotation annotation : JCasUtil.selectCovered(aJCas, NEIOBAnnotation.class, pred)) {
-				if (annotation.getGoldValue() != null) {
-					gold = annotation;
-					break;
+		try (BufferedWriter w = new BufferedWriter(new FileWriter(new File(filename)))) {
+			Iterator<NEIOBAnnotation> it = JCasUtil.select(aJCas, NEIOBAnnotation.class).iterator();
+			while (it.hasNext()) {
+				/* When classifying, NERReader and NERAnnotator create NEIOBAnnotations independently.
+				 * One is used to store the gold value, the other one to store the predicted value.
+				 * This setup assures that classification can also be done when not in a test situation.
+				 * Here, both pieces of information are combined. */
+				NEIOBAnnotation pred = it.next();
+				if (pred.getPredictValue() == null)
+					continue; // Only consider predicted values
+				NEIOBAnnotation gold = null;
+				for (NEIOBAnnotation annotation : JCasUtil.selectCovered(aJCas, NEIOBAnnotation.class, pred)) {
+					if (annotation.getGoldValue() != null) {
+						gold = annotation;
+						break;
+					}
+				}
+				if (gold == null) {
+					System.err.println("No gold annotation found for "
+							+ "[" + pred.getType().getShortName() + "] " + pred.getCoveredText() + " "
+							+ "(" + pred.getBegin() + ", " + pred.getEnd() + ")");
+					continue; // Only consider predictions for which there are gold values
+				}
+				String goldType = gold.getGoldValue();
+				String predType = pred.getPredictValue();
+				// Append information to evaluation file
+				w.write(pred.getCoveredText());
+				w.write(FS + goldType);
+				w.write(FS + predType);
+				w.write(LS);
+				// Collect statistics
+				if (!entityTypes.contains(goldType))
+					entityTypes.add(goldType);
+				if (!entityTypes.contains(predType))
+					entityTypes.add(predType);
+				Pair<String, String> key = new Pair<>(goldType, predType);
+				if (classifications.containsKey(key))
+					classifications.put(key, classifications.get(key) + 1);
+				else
+					classifications.put(key, 1);
+				// Append information onto log
+				if (!goldType.equals(predType)) {
+					s.append("Gold:\t" + goldType + "\t");
+					s.append("Pred.:\t" + predType + "\t");
+					s.append("(" + pred.getBegin() + ", " + pred.getEnd() + ") ");
+					s.append(pred.getCoveredText() + " ");
+					s.append(LS);
 				}
 			}
-			if (gold == null) {
-				System.err.println("No gold annotation found for "
-						+ "[" + pred.getType().getShortName() + "] " + pred.getCoveredText() + " "
-						+ "(" + pred.getBegin() + ", " + pred.getEnd() + ")");
-				continue; // Only consider predictions for which there are gold values
-			}
-			String goldType = gold.getGoldValue();
-			String predType = pred.getPredictValue();
-			// Collect statistics
-			if (!entityTypes.contains(goldType))
-				entityTypes.add(goldType);
-			if (!entityTypes.contains(predType))
-				entityTypes.add(predType);
-			Pair<String, String> key = new Pair<>(goldType, predType);
-			if (classifications.containsKey(key))
-				classifications.put(key, classifications.get(key) + 1);
-			else
-				classifications.put(key, 1);
-			// Append information onto log
-			if (!goldType.equals(predType)) {
-				s.append("Gold:\t" + goldType + "\t");
-				s.append("Pred.:\t" + predType + "\t");
-				s.append("(" + pred.getBegin() + ", " + pred.getEnd() + ") ");
-				s.append(pred.getCoveredText() + " ");
-				s.append(LS);
-			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		s.append(LS);
 		if (verbose)

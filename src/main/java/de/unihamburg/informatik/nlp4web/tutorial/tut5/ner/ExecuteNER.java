@@ -72,6 +72,7 @@ public class ExecuteNER {
 		AnalysisEngine nerWriter = createEngine(NERWriter.class,
 				NERWriter.PARAM_NULL_TYPE, "O",
 				NERWriter.PARAM_EXPECTED_ENTITY_TYPE_NUM, 9,
+				NERWriter.PARAM_FILENAME, "src/test/resources/evaluation/eval.txt",
 				NERWriter.PARAM_VERBOSE, true);
 		
 		runPipeline(

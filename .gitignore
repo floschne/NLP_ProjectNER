@@ -1,6 +1,9 @@
 #ignore generated models
 model/
 
+# ignore generated evaluation files
+**/evaluation/eval.txt
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
