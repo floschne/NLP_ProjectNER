@@ -1,0 +1,43 @@
+\documentclass[11pt, english]{article}
+
+%% Math
+\usepackage{amsmath}
+\usepackage{dsfont}
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}
+
+%% Language and Encoding
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%% Title and Header
+\usepackage{fancyhdr}
+\makeatletter
+\title{Named-Entity Recognition Project\\Documentation}
+\let\Title\@title
+\def\Subtitle{Natural Language Processing and the Web}
+\author{Florian Schneider, Julian Betz}
+\let\Author\@author
+\date{\today}
+\let\Date\@date
+\renewcommand\@maketitle{\noindent\rule{\textwidth}{0.4pt}\par{\centering\LARGE\textbf{\@title}\par\Subtitle\par}\noindent\rule{\textwidth}{0.4pt}\vspace{3ex}\par\noindent\@author\hfill\@date\vspace{3ex}\par}
+\makeatother
+\fancypagestyle{mainmatter}{\fancyhf{}\renewcommand{\headrulewidth}{0.4pt}\lhead{\Author}\rhead{\textsc{NER Project Documentation}}\cfoot{\thepage}}
+
+\setlength\parindent{1em}
+
+%% Grafik
+\usepackage{tikz}
+\tikzset{>=latex}
+
+\begin{document}
+\maketitle
+
+\pagestyle{mainmatter}
+
+\section{} %% TODO
+
+%% TODO
+
+\end{document}
