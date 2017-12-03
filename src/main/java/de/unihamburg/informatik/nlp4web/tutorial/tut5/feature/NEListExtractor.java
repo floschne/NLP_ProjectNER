@@ -16,7 +16,7 @@ public class NEListExtractor implements FeatureFunction {
 
     private final String neListName;
     private final String featureName;
-    private Set<String> namedEntities;
+    private Set<String> namedEntitiesDict;
 
     public NEListExtractor(String neListName, String featureName) throws IOException {
         if (neListName == null || neListName.isEmpty() || !new File(neListName).exists())
@@ -27,20 +27,20 @@ public class NEListExtractor implements FeatureFunction {
             throw new IllegalArgumentException("Please provide a valid name for the NE feature!");
         this.featureName = featureName;
 
-        this.namedEntities = null;
+        this.namedEntitiesDict = null;
     }
 
     /**
-     * Generates the map from NE to their corresponding tag.
+     * Generates the dictionary of Named Entities
      *
      * @throws IOException if file not found or error while readings
      */
-    private void generateNeToTagMap() throws IOException {
+    private void generateDictionary() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.neListName))) {
-            this.namedEntities = new HashSet<>();
+            this.namedEntitiesDict = new HashSet<>();
             String neToken = null;
             while ((neToken = reader.readLine()) != null)
-                this.namedEntities.add(neToken.toLowerCase());
+                this.namedEntitiesDict.add(neToken.toLowerCase());
         } catch (IOException e) {
             e.printStackTrace();
             throw e;
@@ -52,10 +52,10 @@ public class NEListExtractor implements FeatureFunction {
         if (feature == null || feature.getValue() == null)
             throw new IllegalArgumentException("Feature must not be null and has to have an non-empty value!");
         try {
-            if (this.namedEntities == null)
-                this.generateNeToTagMap();
+            if (this.namedEntitiesDict == null)
+                this.generateDictionary();
             String featureValue = feature.getValue().toString().toLowerCase();
-            return namedEntities.contains(featureValue) ? Collections.singletonList(new Feature("NamedEntityList<" + neListName + ">", this.featureName)) : Collections.emptyList();
+            return namedEntitiesDict.contains(featureValue) ? Collections.singletonList(new Feature("NamedEntityList<" + neListName + ">", this.featureName)) : Collections.emptyList();
         } catch (IOException e) {
             e.printStackTrace();
         }
