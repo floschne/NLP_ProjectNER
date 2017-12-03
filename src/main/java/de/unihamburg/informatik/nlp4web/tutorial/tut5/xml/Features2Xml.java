@@ -63,7 +63,7 @@ public class Features2Xml {
         return buffer.toString();
     }
 
-    private static void generateFeatureAblationTestFiles(Integer minUsedExtractors) throws IOException {
+    public static void generateFeatureAblationTestFiles(Integer minUsedExtractors, String outputDir) throws IOException {
 
         //create all feature extractors
         List<FeatureExtractor1<Token>> allFeatureExtractors = FeatureExtractorFactory.createAllFeatureExtractors();
@@ -91,7 +91,7 @@ public class Features2Xml {
         extractorNames.add("locList");
 
         StringBuilder fileName = new StringBuilder();
-        fileName.append(OUTPUT_DIRECTORY).append("featureExtractorCombination_");
+        fileName.append(outputDir).append("featureExtractorCombination_");
         for (Combinations combination : combinations) {
             for (int[] tuple : combination) {
                 //the tuple contains the indices of feature extractors that'll be used in this combination
@@ -108,7 +108,7 @@ public class Features2Xml {
                 writeXML(fileName.toString(), featureExtractorCombination);
                 //reset filename
                 fileName.setLength(0);
-                fileName.append(OUTPUT_DIRECTORY).append("featureExtractorCombination_");
+                fileName.append(outputDir).append("featureExtractorCombination_");
             }
         }
     }
@@ -119,6 +119,6 @@ public class Features2Xml {
         generateTokenFeatureExtractors(featureFileName);
         UIMAFramework.getLogger().log(Level.INFO, "Done: " + featureFileName);
 
-        generateFeatureAblationTestFiles(8);
+        generateFeatureAblationTestFiles(7, OUTPUT_DIRECTORY);
     }
 }

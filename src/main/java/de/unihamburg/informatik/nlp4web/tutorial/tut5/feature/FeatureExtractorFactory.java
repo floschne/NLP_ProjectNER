@@ -48,7 +48,7 @@ public class FeatureExtractorFactory {
         return allFeatureExtractors;
     }
 
-    public static FeatureFunctionExtractor createLocListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createLocListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -56,7 +56,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/deu_LOC.txt", "deu_LOC"));
     }
 
-    public static FeatureFunctionExtractor createOrgListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createOrgListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -64,7 +64,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/deu_ORG.txt", "deu_ORG"));
     }
 
-    public static FeatureFunctionExtractor createMiscListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createMiscListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -72,7 +72,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/deu_MISC.txt", "deu_MISC"));
     }
 
-    public static FeatureFunctionExtractor createCountryListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createCountryListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -80,7 +80,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/englishCountryNames.txt", "engCountry_LOC"));
     }
 
-    public static FeatureFunctionExtractor createCityListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createCityListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -88,7 +88,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/englishCityNames.txt", "engCity_LOC"));
     }
 
-    public static FeatureFunctionExtractor createNameListExtractors() throws IOException {
+    private static FeatureFunctionExtractor createNameListExtractors() throws IOException {
         return new FeatureFunctionExtractor<>(
                         new CoveredTextExtractor<Token>(),
                         FeatureFunctionExtractor.BaseFeatures.EXCLUDE,
@@ -96,7 +96,7 @@ public class FeatureExtractorFactory {
                         new NEListExtractor("src/main/resources/ner/lastNames.txt", "lastName_PER"));
     }
 
-    public static CleartkExtractor<Token, Token> createTokenContextExtractors() {
+    private static CleartkExtractor<Token, Token> createTokenContextExtractors() {
         // create a feature extractor that extracts the surrounding token texts (within the same sentence)
         return new CleartkExtractor<>(Token.class,
                 // the FeatureExtractor that takes the token annotation from the JCas and produces the covered text
@@ -107,7 +107,7 @@ public class FeatureExtractorFactory {
                 new CleartkExtractor.Following(2));
     }
 
-    public static FeatureExtractor1<Token> createTokenFeatureExtractors() {
+    private static FeatureExtractor1<Token> createTokenFeatureExtractors() {
         // create a function feature extractor that creates features corresponding to the token
         // Note the difference between feature extractors and feature functions here. Feature extractors take an Annotation
         // from the JCas and extract features from it. Feature functions take the features produced by the feature extractor
@@ -131,7 +131,7 @@ public class FeatureExtractorFactory {
                 new CharacterCategoryPatternFunction());
     }
 
-    public static TypePathExtractor<Token> createTokenTypePathExtractors() {
+    private static TypePathExtractor<Token> createTokenTypePathExtractors() {
         return new TypePathExtractor<>(Token.class, "stem/value");
     }
 }
