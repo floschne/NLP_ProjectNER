@@ -24,21 +24,31 @@ analyseResults() {
     echo "$result" | sort -r > $RESULT
     echo ""
     rm $EVALUATION_OUTPUT
-    echo "Results saved to: $RESULT:"
-    echo "#################"
+    echo -e "\e[32mResults saved to: $RESULT:\e[0m"
+    echo -e "\e[32m#################\e[0m"
     cat $RESULT
-
+    
+    echo ""
+    echo -e "\e[32mBest combination of feature extractros:\e[0m"
+    echo -e "\e[32m################################################\e[0m"
+    echo ""
+    best=$(head -2 $RESULT)
+    echo -e "\e[31m$best\e[0m"
+    echo ""
+    echo ""
 }
 
-echo "Running evaluation script on all *.txt files in: $(pwd)"
-echo "################################################"
+echo -e "\e[32mRunning evaluation script on all *.txt files in: $(pwd)\e[0m"
+echo -e "\e[32m################################################\e[0m"
+echo ""
 
-    if [[ -e $EVALUATION_OUTPUT ]]; then
-        rm $EVALUATION_OUTPUT
-    fi
-    
-    if [[ -e $RESULT ]]; then
-        rm $RESULT
-    fi
+if [[ -e $EVALUATION_OUTPUT ]]; then
+    rm $EVALUATION_OUTPUT
+fi
+
+if [[ -e $RESULT ]]; then
+    rm $RESULT
+fi
+
 runEval
 analyseResults
