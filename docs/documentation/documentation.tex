@@ -33,9 +33,10 @@
 
 \setlength\parindent{1em}
 
-%% Grafik
+%% Figures
 \usepackage{tikz}
 \tikzset{>=latex}
+\usepackage{lscape}
 
 \begin{document}
 \maketitle
@@ -183,9 +184,11 @@ In this section the process of Feature Ablation that is done in this project get
 
 \subsection{General Approach}
 \label{sec:AblationApproach}
-To see the impact of the different Feature Extractors that are used during the NER, we evaluate the results of the NER when using different combinations of Feature extractors. Since only commenting out the extractors we want not to use in one single Ablation test and run the programm manually again and again, is very boring and takes a lot of time, we thought of an highly automated process which tests a lot of combinations of Feature Extractors. Theoretically we could test every single possible combination, which in our case would lead to $\sum_{k=1}^{n}\binom{n}{k} = 511$ different combinations, where $n = \left | M \right | = 9$ and $M = \{ FeatureExtractor_1, ..,  FeatureExtractor_n \}$ , denoting the set of Feature Extractors we us in the NER. We don't do this since firstly, it's not very useful to test all combinations since it is obvious that the results will be worse if only one or two Extractors are used and secondly, it would require too much computing power (i.e. time). One argument why one could do this anyways is, that one can get more detailed information about the impact of a single Feature Extractor on the result of the NER.\\
-We think a good tradeoff would be if we test all possible combinations of Feature Extractors when using at least seven out of the nine Extractors we use in the NER. When doing this, the number of possible combinations gets reduced to $\sum_{k=7}^{9}\binom{9}{k} = 46$. Because this is still requires a lot of time to compute, we designed the algorithm to run the tests for the different combinations cuncurrently (see section \ref{sec:AblationTestRunner} and \ref{sec:ExecuteFeatureAblationTest} for more detailed information about the algorithm).\\
-The algorithm is explained graphically and at a high level in figure \ref{fig:AblationAlgo}. In this actitity diagram, the color of the steps indicates wether the step is implemented in Java (yellow) or with a Bash / Perl script (green).\\
+To see the impact of the different Feature Extractors that are used during the NER, we evaluate the results of the NER when using different combinations of Feature extractors. Since only commenting out the extractors we want not to use in one single Ablation test and run the programm manually again and again, is very boring and takes a lot of time, we thought of an highly automated process which tests a lot of combinations of Feature Extractors. Theoretically we could test every single possible combination, which in our case would lead to $\sum_{k=1}^{n}\binom{n}{k} = 511$ different combinations, where $n = \left | M \right | = 9$ and $M = \{ FeatureExtractor_1, ..,  FeatureExtractor_n \}$ , denoting the set of Feature Extractors we use in the NER. We don't do this since firstly, it's not very useful to test all combinations since it is obvious that the results will be worse if only one or two Extractors are used and secondly, it would require too much computing power (i.e. time). One argument why one could do this anyways is, that one can get more detailed information about the impact of a single Feature Extractor on the result of the NER.
+
+We think a good tradeoff would be if we test all possible combinations of Feature Extractors when using at least seven out of the nine Extractors we use in the NER. When doing this, the number of possible combinations gets reduced to $\sum_{k=7}^{9}\binom{9}{k} = 46$. Because this is still requires a lot of time to compute, we designed the algorithm to run the tests for the different combinations cuncurrently (see section \ref{sec:AblationTestRunner} and \ref{sec:ExecuteFeatureAblationTest} for more detailed information about the algorithm).
+
+The algorithm is explained graphically in figure \ref{fig:AblationAlgo}
 
 \includegraphics[scale=0.75]{gfx/ablationAlgo.png}
 \captionof{figure}{(High level) Algorithm to find the best combination of Feature Extractors for NER}
@@ -193,6 +196,66 @@ The algorithm is explained graphically and at a high level in figure \ref{fig:Ab
 
 \subsection{Results}
 \label{sec:AblationResult}
+The results of the tests for different combinations can be seen in Table \ref{tbl:results}, sorted by accuracy.
+As can be seen, the best results can be obtained when using all Feature extractors except the OrgListExtractor and MiscListExtractor (Row \ref{tbl:rw:best}, as opposed to using all Feature extractors (Row \ref{tbl:rw:all}).
+
+\begin{landscape}
+  \centering
+  \tiny
+  \begin{tabular}{ll|ccccccccc}
+    Accuracy & Precision & Stem & TokenFeature & ContextFeature & NameList & CityList & CountryList & MiscList & OrgList & LocList\\
+    \hline
+    95.78\% & 80.60\% & O & O & O & O & O & O &  &  & O\label{tbl:rw:best}\\
+    95.75\% & 80.38\% & O & O & O & O &  &  & O & O & O\\
+    95.75\% & 80.38\% & O & O & O & O &  & O & O & O & O\\
+    95.75\% & 79.92\% & O & O & O & O &  & O &  & O & O\\
+    95.74\% & 80.29\% & O & O & O & O & O &  & O & O & O\\
+    95.74\% & 80.29\% & O & O & O & O & O & O & O & O & O\label{tbl:rw:all}\\
+    95.72\% & 79.88\% & O & O & O & O & O &  &  & O & O\\
+    95.72\% & 79.88\% & O & O & O & O & O & O &  & O & O\\
+    95.69\% & 80.45\% & O & O & O & O & O & O &  & O & \\
+    95.69\% & 79.68\% & O & O & O & O & O &  & O &  & O\\
+    95.69\% & 79.68\% & O & O & O & O & O & O & O &  & O\\
+    95.67\% & 80.91\% & O & O & O & O & O &  & O & O & \\
+    95.67\% & 80.91\% & O & O & O & O & O & O & O & O & \\
+    95.67\% & 79.65\% & O & O & O & O &  & O & O &  & O\\
+    95.64\% & 79.49\% & O & O & O &  & O & O &  & O & O\\
+    95.63\% & 79.66\% &  & O & O & O & O &  & O & O & O\\
+    95.63\% & 79.66\% &  & O & O & O & O & O & O & O & O\\
+    95.63\% & 79.58\% &  & O & O & O &  & O & O & O & O\\
+    95.62\% & 80.41\% & O & O & O & O & O & O & O &  & \\
+    95.60\% & 79.55\% & O & O & O &  & O &  & O & O & O\\
+    95.60\% & 79.55\% & O & O & O &  & O & O & O & O & O\\
+    95.60\% & 79.05\% & O & O & O &  & O & O & O &  & O\\
+    95.58\% & 79.45\% & O & O & O &  &  & O & O & O & O\\
+    95.57\% & 78.91\% &  & O & O & O & O & O &  & O & O\\
+    95.54\% & 80.51\% & O & O & O &  & O & O & O & O & \\
+    95.53\% & 79.00\% &  & O & O & O & O & O & O &  & O\\
+    95.51\% & 78.95\% &  & O & O &  & O & O & O & O & O\\
+    95.49\% & 79.98\% & O & O & O & O &  & O & O & O & \\
+    95.44\% & 79.48\% &  & O & O & O & O & O & O & O & \\
+    95.32\% & 77.61\% & O & O &  & O & O &  & O & O & O\\
+    95.32\% & 77.61\% & O & O &  & O & O & O & O & O & O\\
+    95.30\% & 77.46\% & O & O &  & O &  & O & O & O & O\\
+    95.26\% & 76.83\% & O & O &  & O & O & O &  & O & O\\
+    95.19\% & 76.76\% & O & O &  &  & O & O & O & O & O\\
+    95.06\% & 76.56\% & O & O &  & O & O & O & O & O & \\
+    95.00\% & 75.94\% &  & O &  & O & O & O & O & O & O\\
+    94.82\% & 76.01\% & O & O &  & O & O & O & O &  & O\\
+    90.17\% & 64.59\% &  &  & O & O & O & O & O & O & O\\
+    84.56\% & 39.77\% & O &  & O & O &  & O & O & O & O\\
+    84.28\% & 38.60\% & O &  & O &  & O & O & O & O & O\\
+    84.16\% & 38.19\% & O &  & O & O & O &  & O & O & O\\
+    84.16\% & 38.19\% & O &  & O & O & O & O & O & O & O\\
+    83.75\% & 38.39\% & O &  & O & O & O & O & O & O & \\
+    81.64\% & 33.72\% & O &  & O & O & O & O &  & O & O\\
+    78.13\% & 24.74\% & O &  & O & O & O & O & O &  & O\\
+    74.53\% & 17.27\% & O &  &  & O & O & O & O & O & O\\
+  \end{tabular}
+  \caption{Feature ablation results.}
+  \label{tbl:results}
+\end{landscape}
+
 
 \section{Final Evaluation and Results}
 To get the results, we instantiated the best combination of FeatureExtractors determined by the Feature Ablation test described in section \ref{sec:Ablation}. We then concatenated the 'old' training and test files provided in the Moodel Course (because it is allowed to do so) and used the concatenated file as new training file. The new test file is the file provided for the final evaluation. When running the Perl script for the evaluation on the generated output file the results are as shown in figure \ref{fig:finalResult}.
