@@ -46,7 +46,7 @@
 \label{sec:Classes}
 The following classes were newly implemented in \url{de.unihamburg.informatik.nlp4web.tutorial.tut5}.
 
-\subsection{\texttt{writer.NERWriter}}
+\subsection{\texttt{NERWriter}}
 An Analysis Engine that processes a CAS to generate the evaluation file and to calculate statistics for the \verb/NEIOBAnnotations/ generated earlier in the pipeline.
 It finds all \verb/NEIOBAnnotations/ that have an attached prediction value and searches for the \verb/NEIOBAnnotation/ that has the corresponding gold standard value.
 Each gold standard / prediction pair, along with the corresponding token, is printed to a text file that can be used as input for the evaluation scripts.
@@ -120,7 +120,7 @@ This class holds the algorithm to do the Feature Ablation. It basically just ini
 The following classes were adapted in \url{de.unihamburg.informatik.nlp4web.tutorial.tut5}.
 
 \subsection{\texttt{ner.ExecuteNER}}
-The Analysis Engine \verb/writer.NERWriter/ was added to the end of the pipeline in \verb/classifyTestFile/.
+The Analysis Engine \verb/NERWriter/ was added to the end of the pipeline in \verb/classifyTestFile/.
 \subsection{Features2Xml}
 \label{sec:Features2Xml}
 This class was only slightly modified by refactoring some methods to reduces code redundancy. The methods \verb/generateFeatureAblationTestFiles()/ holds the functionallity to generate the XML configuration files for all combinations of Feature Extractors that will be tested during the Feature Ablation. It expects an Integer representing the number of minimum Feature Extractors that will be used and a String holding the output directory for the generated files. Those files are named by the Feature Extractors that get instantiated when using the file. For examlple the filename will include 'contextFeature' when the \verb/ContextFeatureExtractor/ is used in this configuration. See section \ref{sec:Ablation} for a more detailed describtion.
@@ -191,7 +191,15 @@ The algorithm is explained graphically and at a high level in figure \ref{fig:Ab
 \captionof{figure}{(High level) Algorithm to find the best combination of Feature Extractors for NER}
 \label{fig:AblationAlgo}
 
-
 \subsection{Results}
+\label{sec:AblationResult}
+
+\section{Final Evaluation and Results}
+To get the results, we instantiated the best combination of FeatureExtractors determined by the Feature Ablation test described in section \ref{sec:Ablation}. We then concatenated the 'old' training and test files provided in the Moodel Course (because it is allowed to do so) and used the concatenated file as new training file. The new test file is the file provided for the final evaluation. When running the Perl script for the evaluation on the generated output file the results are as shown in figure \ref{fig:finalResult}.
+
+
+\includegraphics[width=\linewidth, keepaspectratio]{gfx/finalEvalOut.png}
+\captionof{figure}{Output of the evaluation script on the final test file.}
+\label{fig:finalResult}
 
 \end{document}
