@@ -45,7 +45,7 @@
 
 \section{Newly implemented classes}
 \label{sec:Classes}
-The following classes were newly implemented in \url{de.unihamburg.informatik.nlp4web.tutorial.tut5}.
+The following classes were newly implemented.
 
 \subsection{\texttt{NERWriter}}
 An Analysis Engine that processes a CAS to generate the evaluation file and to calculate statistics for the \verb/NEIOBAnnotations/ generated earlier in the pipeline.
@@ -118,7 +118,7 @@ This class holds the algorithm to do the Feature Ablation. It basically just ini
 
 
 \section{Adapted classes}
-The following classes were adapted in \url{de.unihamburg.informatik.nlp4web.tutorial.tut5}.
+The following classes were adapted to suit the project.
 
 \subsection{\texttt{ner.ExecuteNER}}
 The Analysis Engine \verb/NERWriter/ was added to the end of the pipeline in \verb/classifyTestFile/.
@@ -196,8 +196,12 @@ The algorithm is explained graphically in figure \ref{fig:AblationAlgo}
 
 \subsection{Results}
 \label{sec:AblationResult}
-The results of the tests for different combinations can be seen in Table \ref{tbl:results}, sorted by accuracy.
-As can be seen, the best results can be obtained when using all Feature extractors except the OrgListExtractor and MiscListExtractor (Row \ref{tbl:rw:best}, as opposed to using all Feature extractors (Row \ref{tbl:rw:all}).
+The results of the tests for different combinations on the development dataset can be seen in Figure \ref{fig:results}, sorted by accuracy.
+As can be seen, the best results can be obtained when omitting the OrgListExtractor and MiscListExtractor, as opposed to using all Feature extractors.
+This setting also has a high precision on the data.
+
+The results strongly suggest that the TokenFeatureExtractor is most vital for correctly predicting Named Entities; the ContextFeatureExtractor is the second most important Feature extractor.
+
 
 \begin{landscape}
   \centering
@@ -205,12 +209,12 @@ As can be seen, the best results can be obtained when using all Feature extracto
   \begin{tabular}{ll|ccccccccc}
     Accuracy & Precision & Stem & TokenFeature & ContextFeature & NameList & CityList & CountryList & MiscList & OrgList & LocList\\
     \hline
-    95.78\% & 80.60\% & O & O & O & O & O & O &  &  & O\label{tbl:rw:best}\\
+    95.78\% & 80.60\% & O & O & O & O & O & O &  &  & O\\
     95.75\% & 80.38\% & O & O & O & O &  &  & O & O & O\\
     95.75\% & 80.38\% & O & O & O & O &  & O & O & O & O\\
     95.75\% & 79.92\% & O & O & O & O &  & O &  & O & O\\
     95.74\% & 80.29\% & O & O & O & O & O &  & O & O & O\\
-    95.74\% & 80.29\% & O & O & O & O & O & O & O & O & O\label{tbl:rw:all}\\
+    95.74\% & 80.29\% & O & O & O & O & O & O & O & O & O\\
     95.72\% & 79.88\% & O & O & O & O & O &  &  & O & O\\
     95.72\% & 79.88\% & O & O & O & O & O & O &  & O & O\\
     95.69\% & 80.45\% & O & O & O & O & O & O &  & O & \\
@@ -253,7 +257,7 @@ As can be seen, the best results can be obtained when using all Feature extracto
     74.53\% & 17.27\% & O &  &  & O & O & O & O & O & O\\
   \end{tabular}
   \caption{Feature ablation results.}
-  \label{tbl:results}
+  \label{fig:results}
 \end{landscape}
 
 
