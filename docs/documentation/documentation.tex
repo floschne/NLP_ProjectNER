@@ -1,0 +1,297 @@
+\documentclass[11pt, english]{article}
+
+%% Math
+\usepackage{amsmath}
+\usepackage{dsfont}
+\DeclareMathOperator{\Exists}{\exists}
+\DeclareMathOperator{\Forall}{\forall}
+
+%% Language and Encoding
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{varioref}
+\usepackage{hyperref}
+\usepackage[font={small,it}]{caption}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{lscape}
+
+%% Title and Header
+\usepackage{fancyhdr}
+\makeatletter
+\title{Named-Entity Recognition Project\\Documentation}
+\let\Title\@title
+\def\Subtitle{Natural Language Processing and the Web}
+\author{Florian Schneider, Julian Betz}
+\let\Author\@author
+\date{\today}
+\let\Date\@date
+\renewcommand\@maketitle{\noindent\rule{\textwidth}{0.4pt}\par{\centering\LARGE\textbf{\@title}\par\Subtitle\par}\noindent\rule{\textwidth}{0.4pt}\vspace{3ex}\par\noindent\@author\hfill\@date\vspace{3ex}\par}
+\makeatother
+\fancypagestyle{mainmatter}{\fancyhf{}\renewcommand{\headrulewidth}{0.4pt}\lhead{\Author}\rhead{\textsc{NER Project Documentation}}\cfoot{\thepage}}
+
+\setlength\parindent{1em}
+
+%% Figures
+\usepackage{tikz}
+\tikzset{>=latex}
+\usepackage{lscape}
+
+\begin{document}
+\maketitle
+
+\pagestyle{mainmatter}
+
+\section{Newly implemented classes}
+\label{sec:Classes}
+The following classes were newly implemented.
+
+\subsection{\texttt{NERWriter}}
+An Analysis Engine that processes a CAS to generate the evaluation file and to calculate statistics for the \verb/NEIOBAnnotations/ generated earlier in the pipeline.
+It finds all \verb/NEIOBAnnotations/ that have an attached prediction value and searches for the \verb/NEIOBAnnotation/ that has the corresponding gold standard value.
+Each gold standard / prediction pair, along with the corresponding token, is printed to a text file that can be used as input for the evaluation scripts.
+
+For each gold standard value, the number of predictions of each named-entity type is shown in the output.
+As an aggregate result, the absolute and relative amounts of correct classification are given.
+Furthermore, a table is generated that shows the number of classifications of a token as a named entity or non-named entity.
+Finally, the absolute and relative amounts of correct classification of tokens that are named entities according to the gold standard are given.
+(This number may be of interest as there are far more non-named entities than named entities in the data, according to the gold standard.)
+
+\subsubsection{Configuration parameters}
+The configuration parameter \verb/PARAM_FILENAME/ is the filename of the evaluation file to be generated.
+
+The configuration parameter \verb/PARAM_NULL_TYPE/ determines which string is used for marking non-named entities in the input.
+(Set to ``O'' in our case.)
+
+If the configuration parameter \verb/PARAM_VERBOSE/ is set to \verb/true/, all incorrect predictions are printed out to the log before printing the statistics.
+
+The configuration parameter \verb/PARAM_EXPECTED_ENTITY_TYPE_NUM/ is used for the initialization of data structures and only affects efficiency, but not functionality.
+
+\subsection{\texttt{NEListExtractor<Token>}}
+\label{sec:NEListExtractor}
+This class provides a functionallity to create a feature if the covered text of a token appears in a gazetteer. As shown in figure \ref{fig:NEListExtractor}, the \verb/NEListExtractor/ class implements the \verb/FeatureFunction/ interface. This is because this feature extractor works on the covered text of a token as mentioned before. Therefore, to use the \verb/NEListExtractor/ one has to do use it with the \verb/CoveredTextExtractor/ from the ClearTK Framework. An example can be seen in figure \ref{fig:NEListExtractorSample}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{gfx/createNEListExtractor.png}
+    \captionof{figure}{Example on how to use NEListExtractors}
+    \label{fig:NEListExtractorSample}
+\end{figure}
+
+Please note, that in the example two \verb/NEListExtractor/s are instantiated with two different gazetteers and feature names. The constructor of the \verb/NEListAnnotator/ requires two Strings, which represent the name (or path) to the list of Named Entities and the value of the feature that'll be created, respectivley (see figure \ref{fig:NEListExtractor}). The provided list of Named Entities that will be used by the \verb/NEListExtractor/ has to contain one single column. Each row contains one word, that represent the Named Entity. Please note, that it is not possible to use e.g. 'New York' as a single Named Entity since it contains a space. This restriction is due to the \verb/CoveredTextExtractor/ that only 'looks' at one Token at a time and the Segmenter which is used in the pipeline creates two Tokens in this case - namlely 'New' and 'York'. Theoretically this can be changed by using a better Segmenter or using a different \verb/TokenFeatureExtractor/ than the \verb/CoveredTextExtractor/, that takes multiple Tokens at a time in account.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{gfx/NEListExtractor.png}
+    \captionof{figure}{Class diagram of the NEListExtractor}
+    \label{fig:NEListExtractor}
+\end{figure}
+
+The functionallity of the \verb/NEListExtractor/ is implemented in the overridden \verb/apply()/ method. A graphical representation of this method can be seen in figure \ref{fig:NEListExtractorApply}. Whenn the \verb/apply()/ method gets called (indirectly from the \verb/NERAnnotator/) at first the list of Named Entities gets generated in the \verb/generateDicionary()/ method. This is simply done by reading the list file line by line and storing the Named Enity in a Hash Set for fast look up. Since this has to be done only once and not everytime the apply() method gets called, there is a check if the dict has already been initialized. Then a simple look up of the Tokens covered text in the dictionary is done. If it appears in the dictionary, a Feature for the Token that holds the neListName as Features name and featureValue as the Features value member variables gets created. Since the interface of the \verb/apply()/ method requires a list of Features as return type, the Feature gets added to a singleton list (i.e. an immuatable list that only contains one item). If the list of named entities does not contain the Tokens covered text an empty list will be returned.
+\begin{figure}
+    \includegraphics[scale=0.75]{gfx/apply.png}
+    \captionof{figure}{Activity diagram of the apply() method of NEListExtractor}
+    \label{fig:NEListExtractorApply}
+\end{figure}
+
+\subsection{\texttt{FeatureExtractorFactory}}
+\label{sec:FeatureExtractorFactory}
+This class only serves as untility class to instantiate the different Feature Extractors that will be used during NER and helps to reduce code redundancy. The class diagram is shown in figure \ref{fig:FeatureExtractorFactory}. The names of the methods represent exactly what the method does - no magic at all. A more detailed description of the different Features Extractors have a look at section \ref{sec:FeatureExtractors}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{gfx/FeatureExtractorFactory.png}
+    \captionof{figure}{Class diagram of the FeatureExtractorFactory}
+    \label{fig:FeatureExtractorFactory}
+\end{figure}
+
+\subsection{\texttt{AblationTestRunner}}
+\label{sec:AblationTestRunner}
+This class implements the \verb/Runnable/ interface and holds the algorithm of one single 'ablation test run'. The methods and algorithm in general were already provided by the boilerplate code available in the moodle course and contains only three steps shown in figure \ref{fig:AblationTestRunnerAlgo}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{gfx/ablationRunnerAlgo.png}
+    \captionof{figure}{Activity diagram of the high level algorithm of the \texttt{AblationTestRunner}}
+    \label{fig:AblationTestRunnerAlgo}
+\end{figure}
+
+The only adaption, that was made to the methods is, that each instance of an \verb/AblationTestRunner/ gets initialized with the configuration file, training file and test file, that will be used within the methods, whereas the boilerplate code used hardcoded file names. The constructor of the class also requires an Integer that represents the ID of one instance. This ID is used to write the generated models to different locations. Since the \verb/AblationTestRunner/s are running in parallel, this step is neccessary because if we would do otherwise, the runners would always read/write to/from the same model. This, of course, leads to fatal errors since the Features used in the models are different in different models.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{gfx/AblationTestRunner.png}
+    \captionof{figure}{Class diagram of the AblationTestRunner}
+    \label{fig:AblationTestRunner}
+\end{figure}
+
+\subsection{\texttt{ExecuteFeatureAblationTest}}
+\label{sec:ExecuteFeatureAblationTest}
+This class holds the algorithm to do the Feature Ablation. It basically just initializes the variables and configuration parameters and then instantiates the \verb/AblationTestRunner/s and hands them over to the managed thread pool. For a more detailed description have a look at section \ref{sec:AblationApproach}
+
+
+
+\section{Adapted classes}
+The following classes were adapted to suit the project.
+
+\subsection{\texttt{ner.ExecuteNER}}
+The Analysis Engine \verb/NERWriter/ was added to the end of the pipeline in \verb/classifyTestFile/.
+\subsection{Features2Xml}
+\label{sec:Features2Xml}
+This class was only slightly modified by refactoring some methods to reduces code redundancy. The methods \verb/generateFeatureAblationTestFiles()/ holds the functionallity to generate the XML configuration files for all combinations of Feature Extractors that will be tested during the Feature Ablation. It expects an Integer representing the number of minimum Feature Extractors that will be used and a String holding the output directory for the generated files. Those files are named by the Feature Extractors that get instantiated when using the file. For examlple the filename will include 'contextFeature' when the \verb/ContextFeatureExtractor/ is used in this configuration. See section \ref{sec:Ablation} for a more detailed describtion.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{gfx/Features2Xml.png}
+    \captionof{figure}{Class diagram of the Features2Xml class}
+    \label{fig:Features2Xml}
+\end{figure}
+
+\section{Used Feature Extractors}
+In this section the Feature Extractors that are used during the NER are described. Most of the time we used FeatureExtractors of the UIMA or ClearTK Framework and will therefor not describe them in this document. For a detailed description please visit the API Documentaion of the ClearTK Framework which can be found via this URL: \url{https://cleartk.github.io/cleartk/apidocs/2.0.0/}
+\subsection{Description}
+
+\subsubsection*{StemExtractor - Type: \texttt{TypePathExtractor<Token>}}
+This \verb/TypePathExtractor/ will create a \verb/Feature/ from the stem value of the Token
+
+\subsubsection*{TokenFeatureExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and creates \verb/Feature/s with the following \verb/FeatureFunction/s: \verb/LowerCaseFeatureFunction/, \verb/CapitalTypeFeatureFunction/, \verb/NumericTypeFeatureFunction/, \verb/CharacterNgramFeatureFunction/ to create a bigram suffix, \verb/CharacterNgramFeatureFunction/ to create a trigram suffix, \verb/CharacterCategoryPatternFunction/
+
+\subsubsection*{TokenContextExtractor - Type: \texttt{CleartkExtractor<Token, Token>}}
+This FeatureExtractor creates a Feature from the context of the Token it analyses. As base \verb/FeatureExtractor/ a \verb/CoveredTextExtractor/ is used and the context is set to the two preceeding and following Tokens.
+
+\subsubsection*{NameListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsubsection*{CityListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsubsection*{CountryListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsubsection*{MiscListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsubsection*{LocListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsubsection*{OrgListExtractor - Type: \texttt{FeatureFunctionExtractor<Token>}}
+This \verb/FeatureFunctionExtractor/ uses a \verb/CoveredTextExtractor/ as base \verb/FeatureExtractor/ and two \verb/NEListExtractor/s (see section \ref{sec:NEListExtractor}) to create a \verb/Feature/. The gazetteers that are used are descriped in section \ref{sec:Gazetteers}.
+
+\subsection{Gazeteers for the different \texttt{NEListExtractor}s}
+\label{sec:Gazetteers}
+
+\subsubsection*{Country and City Lists}
+Source: \url{https://dev.maxmind.com/geoip/geoip2/geolite2/}\\
+This dataset contains a list of countries and cities in multiple languages a long some information which is not needed in out application. We filtered the neccessary information, which contains a list of countries in german and english language and stored it in a simple text file.
+
+\subsubsection*{Name Lists}
+Source: \url{http://www.quietaffiliate.com/free-first-name-and-last-name-databases-csv-and-sql/}\\
+This dataset is made up from 5494 first names and 88799 last names. We also formatted the data to meet the interface constraints from the \verb/NEListExtractor/s. 
+
+\subsubsection*{Loc(ation), Misc(ellanous) and Org(anisation) List}
+Source: provided via Moodle Course\\
+Here we just splitted the list, that is available in the Moodle Course into three lists containing location, miscellaneous and organisation names. Since the interface of the \verb/NEListExtractor/ requires the lists to be in only one column, we removed the first column of the original list. Note that we dropped the entries in the original list that hold personal names since we use the dataset described above.
+
+
+
+\section{Feature Ablation}
+\label{sec:Ablation}
+In this section the process of Feature Ablation that is done in this project gets described. The classes that are used for this are described in the section \ref{sec:Classes}. The goal of this process is to find the combination of Feature Extractors that yields the best NER results.
+
+\subsection{General Approach}
+\label{sec:AblationApproach}
+To see the impact of the different Feature Extractors that are used during the NER, we evaluate the results of the NER when using different combinations of Feature extractors. Since only commenting out the extractors we want not to use in one single Ablation test and run the programm manually again and again, is very boring and takes a lot of time, we thought of an highly automated process which tests a lot of combinations of Feature Extractors. Theoretically we could test every single possible combination, which in our case would lead to $\sum_{k=1}^{n}\binom{n}{k} = 511$ different combinations, where $n = \left | M \right | = 9$ and $M = \{ FeatureExtractor_1, ..,  FeatureExtractor_n \}$ , denoting the set of Feature Extractors we use in the NER. We don't do this since firstly, it's not very useful to test all combinations since it is obvious that the results will be worse if only one or two Extractors are used and secondly, it would require too much computing power (i.e. time). One argument why one could do this anyways is, that one can get more detailed information about the impact of a single Feature Extractor on the result of the NER.
+
+We think a good tradeoff would be if we test all possible combinations of Feature Extractors when using at least seven out of the nine Extractors we use in the NER. When doing this, the number of possible combinations gets reduced to $\sum_{k=7}^{9}\binom{9}{k} = 46$. Because this is still requires a lot of time to compute, we designed the algorithm to run the tests for the different combinations cuncurrently (see section \ref{sec:AblationTestRunner} and \ref{sec:ExecuteFeatureAblationTest} for more detailed information about the algorithm).
+
+The algorithm is explained graphically in figure \ref{fig:AblationAlgo}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.75]{gfx/ablationAlgo.png}
+    \captionof{figure}{(High level) Algorithm to find the best combination of Feature Extractors for NER}
+    \label{fig:AblationAlgo}
+\end{figure}
+
+\subsection{Results}
+\label{sec:AblationResult}
+The results of the tests for different combinations on the development dataset can be seen in Figure \ref{fig:results}, sorted by accuracy.
+As can be seen, the best results can be obtained when omitting the OrgListExtractor and MiscListExtractor, as opposed to using all Feature extractors.
+This setting also has a high precision on the data.
+
+The results strongly suggest that the TokenFeatureExtractor is most vital for correctly predicting Named Entities; the ContextFeatureExtractor is the second most important Feature extractor.
+
+
+\begin{landscape}
+  \centering
+  \tiny
+  \begin{tabular}{ll|ccccccccc}
+    Accuracy & Precision & Stem & TokenFeature & ContextFeature & NameList & CityList & CountryList & MiscList & OrgList & LocList\\
+    \hline
+    95.78\% & 80.60\% & O & O & O & O & O & O &  &  & O\\
+    95.75\% & 80.38\% & O & O & O & O &  &  & O & O & O\\
+    95.75\% & 80.38\% & O & O & O & O &  & O & O & O & O\\
+    95.75\% & 79.92\% & O & O & O & O &  & O &  & O & O\\
+    95.74\% & 80.29\% & O & O & O & O & O &  & O & O & O\\
+    95.74\% & 80.29\% & O & O & O & O & O & O & O & O & O\\
+    95.72\% & 79.88\% & O & O & O & O & O &  &  & O & O\\
+    95.72\% & 79.88\% & O & O & O & O & O & O &  & O & O\\
+    95.69\% & 80.45\% & O & O & O & O & O & O &  & O & \\
+    95.69\% & 79.68\% & O & O & O & O & O &  & O &  & O\\
+    95.69\% & 79.68\% & O & O & O & O & O & O & O &  & O\\
+    95.67\% & 80.91\% & O & O & O & O & O &  & O & O & \\
+    95.67\% & 80.91\% & O & O & O & O & O & O & O & O & \\
+    95.67\% & 79.65\% & O & O & O & O &  & O & O &  & O\\
+    95.64\% & 79.49\% & O & O & O &  & O & O &  & O & O\\
+    95.63\% & 79.66\% &  & O & O & O & O &  & O & O & O\\
+    95.63\% & 79.66\% &  & O & O & O & O & O & O & O & O\\
+    95.63\% & 79.58\% &  & O & O & O &  & O & O & O & O\\
+    95.62\% & 80.41\% & O & O & O & O & O & O & O &  & \\
+    95.60\% & 79.55\% & O & O & O &  & O &  & O & O & O\\
+    95.60\% & 79.55\% & O & O & O &  & O & O & O & O & O\\
+    95.60\% & 79.05\% & O & O & O &  & O & O & O &  & O\\
+    95.58\% & 79.45\% & O & O & O &  &  & O & O & O & O\\
+    95.57\% & 78.91\% &  & O & O & O & O & O &  & O & O\\
+    95.54\% & 80.51\% & O & O & O &  & O & O & O & O & \\
+    95.53\% & 79.00\% &  & O & O & O & O & O & O &  & O\\
+    95.51\% & 78.95\% &  & O & O &  & O & O & O & O & O\\
+    95.49\% & 79.98\% & O & O & O & O &  & O & O & O & \\
+    95.44\% & 79.48\% &  & O & O & O & O & O & O & O & \\
+    95.32\% & 77.61\% & O & O &  & O & O &  & O & O & O\\
+    95.32\% & 77.61\% & O & O &  & O & O & O & O & O & O\\
+    95.30\% & 77.46\% & O & O &  & O &  & O & O & O & O\\
+    95.26\% & 76.83\% & O & O &  & O & O & O &  & O & O\\
+    95.19\% & 76.76\% & O & O &  &  & O & O & O & O & O\\
+    95.06\% & 76.56\% & O & O &  & O & O & O & O & O & \\
+    95.00\% & 75.94\% &  & O &  & O & O & O & O & O & O\\
+    94.82\% & 76.01\% & O & O &  & O & O & O & O &  & O\\
+    90.17\% & 64.59\% &  &  & O & O & O & O & O & O & O\\
+    84.56\% & 39.77\% & O &  & O & O &  & O & O & O & O\\
+    84.28\% & 38.60\% & O &  & O &  & O & O & O & O & O\\
+    84.16\% & 38.19\% & O &  & O & O & O &  & O & O & O\\
+    84.16\% & 38.19\% & O &  & O & O & O & O & O & O & O\\
+    83.75\% & 38.39\% & O &  & O & O & O & O & O & O & \\
+    81.64\% & 33.72\% & O &  & O & O & O & O &  & O & O\\
+    78.13\% & 24.74\% & O &  & O & O & O & O & O &  & O\\
+    74.53\% & 17.27\% & O &  &  & O & O & O & O & O & O\\
+  \end{tabular}
+  \caption{Feature ablation results.}
+  \label{fig:results}
+\end{landscape}
+
+
+\section{Final Evaluation and Results}
+To get the results, we instantiated the best combination of FeatureExtractors determined by the Feature Ablation test described in section \ref{sec:Ablation}. We then concatenated the 'old' training and test files provided in the Moodel Course (because it is allowed to do so) and used the concatenated file as new training file. The new test file is the file provided for the final evaluation. When running the Perl script for the evaluation on the generated output file the results are as shown in figure \ref{fig:finalResult}.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{gfx/finalEvalOut.png}
+    \captionof{figure}{Output of the evaluation script on the final test file.}
+    \label{fig:finalResult}
+\end{figure}
+
+\end{document}
