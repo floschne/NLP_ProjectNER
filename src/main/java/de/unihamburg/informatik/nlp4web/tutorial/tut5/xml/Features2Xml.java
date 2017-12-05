@@ -90,6 +90,7 @@ public class Features2Xml {
         extractorNames.add("orgList");
         extractorNames.add("locList");
 
+
         StringBuilder fileName = new StringBuilder();
         fileName.append(outputDir).append("featureExtractorCombination_");
         for (Combinations combination : combinations) {
@@ -111,6 +112,21 @@ public class Features2Xml {
                 fileName.append(outputDir).append("featureExtractorCombination_");
             }
         }
+    }
+
+    public static void generateFeatureExtractionCombination(String fileName) throws IOException {
+        // the  result (best combination of extractors) of the ablation test was:
+        // stem,tokenFeature,contextFeature,nameList,cityList,countryList,locList
+        List<FeatureExtractor1<Token>> featureExtractors = new ArrayList<>();
+        featureExtractors.add(FeatureExtractorFactory.createTokenTypePathExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createTokenFeatureExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createTokenContextExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createNameListExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createCityListExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createCountryListExtractors());
+        featureExtractors.add(FeatureExtractorFactory.createLocListExtractors());
+
+        writeXML(fileName, featureExtractors);
     }
 
     public static void main(String[] args) throws IOException {
